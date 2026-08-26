@@ -8,10 +8,13 @@ export const bookRepository = {
     return catalog;
   },
 
+ codex/mostrar-estructura-de-archivos-fqxbm8
   getById(id: string): Book | null {
     return catalog.find((book) => book.id === id) ?? null;
   },
 
+
+ main
   search(term: string): Book[] {
     const normalizedTerm = term.trim().toLowerCase();
 

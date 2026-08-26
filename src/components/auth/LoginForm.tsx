@@ -30,6 +30,7 @@ function LoginForm({ error, onSubmit }: LoginFormProps) {
     <form className="login-card" onSubmit={handleSubmit}>
       <div className="login-card__header">
         <span className="login-card__eyebrow">Biblioteca digital</span>
+ codex/mostrar-estructura-de-archivos-fqxbm8
         <h1>Bienvenido de nuevo</h1>
         <p>Ingresa con tus credenciales para continuar explorando el catálogo.</p>
       </div>
@@ -37,6 +38,17 @@ function LoginForm({ error, onSubmit }: LoginFormProps) {
       <div className="login-form__group">
         <label htmlFor="carnet">Carnet de identidad</label>
 
+        <h1>Bienvenido de nuevo</h1>
+
+        <p>
+          Ingresa con tus credenciales para continuar explorando el catálogo.
+        </p>
+      </div>
+
+      <div className="login-form__group">
+        <label htmlFor="carnet">Carnet de identidad</label>
+
+ main
         <input
           id="carnet"
           name="carnet"
@@ -77,4 +89,8 @@ function LoginForm({ error, onSubmit }: LoginFormProps) {
   );
 }
 
+ codex/mostrar-estructura-de-archivos-fqxbm8
 export default LoginForm;
+
+export default LoginForm;
+ main

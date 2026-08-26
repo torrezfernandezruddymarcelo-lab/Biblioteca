@@ -27,20 +27,16 @@ function LoginForm({ error, onSubmit }: LoginFormProps) {
   };
 
   return (
- codex/mostrar-estructura-de-archivos
     <form className="login-card" onSubmit={handleSubmit}>
-
-   <form className="login-card" onSubmit={handleSubmit}>
- main
       <div className="login-card__header">
         <span className="login-card__eyebrow">Biblioteca digital</span>
+
         <h1>Bienvenido de nuevo</h1>
-        <p>Ingresa con tus credenciales para continuar explorando el catálogo.</p>
+
+        <p>
+          Ingresa con tus credenciales para continuar explorando el catálogo.
+        </p>
       </div>
- codex/mostrar-estructura-de-archivos
-
-
-main
 
       <div className="login-form__group">
         <label htmlFor="carnet">Carnet de identidad</label>
@@ -78,13 +74,9 @@ main
         </p>
       )}
 
- codex/mostrar-estructura-de-archivos
       <button className="login-form__submit" type="submit">
         Ingresar
       </button>
-
-      <button className="login-form__submit" type="submit"></button>
- main
     </form>
   );
 }

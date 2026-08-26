@@ -356,7 +356,9 @@ input {
 .home-hero p,
 .home-profile-card p,
 .home-stat p,
+ codex/mostrar-estructura-de-archivos
 .home-panel__header p,
+ main
 .home-book p,
 .home-activity {
   margin: 0;
@@ -522,6 +524,7 @@ input {
   color: #172033;
 }
 
+ codex/mostrar-estructura-de-archivos
 .home-book__content {
   display: grid;
   gap: 0.45rem;
@@ -551,6 +554,8 @@ input {
   color: #5865d8;
 }
 
+
+ main
 .home-activity {
   display: grid;
   gap: 0.85rem;
@@ -604,4 +609,8 @@ input {
   .home-search button {
     width: 100%;
   }
+ codex/mostrar-estructura-de-archivos
 }
+
+}
+ main

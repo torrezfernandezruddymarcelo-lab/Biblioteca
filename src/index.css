@@ -356,6 +356,9 @@ input {
 .home-hero p,
 .home-profile-card p,
 .home-stat p,
+ codex/mostrar-estructura-de-archivos
+.home-panel__header p,
+ main
 .home-book p,
 .home-activity {
   margin: 0;
@@ -521,6 +524,38 @@ input {
   color: #172033;
 }
 
+ codex/mostrar-estructura-de-archivos
+.home-book__content {
+  display: grid;
+  gap: 0.45rem;
+}
+
+.home-book__status {
+  width: max-content;
+  border-radius: 999px;
+  padding: 0.45rem 0.7rem;
+  font-size: 0.78rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.home-book__status--disponible {
+  background: rgba(44, 184, 120, 0.14);
+  color: #15834f;
+}
+
+.home-book__status--reservado {
+  background: rgba(255, 122, 69, 0.14);
+  color: #cc5a2e;
+}
+
+.home-book__status--prestado {
+  background: rgba(101, 116, 247, 0.14);
+  color: #5865d8;
+}
+
+
+ main
 .home-activity {
   display: grid;
   gap: 0.85rem;
@@ -574,4 +609,8 @@ input {
   .home-search button {
     width: 100%;
   }
+ codex/mostrar-estructura-de-archivos
 }
+
+}
+ main

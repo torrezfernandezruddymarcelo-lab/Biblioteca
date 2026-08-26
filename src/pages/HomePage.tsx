@@ -1,6 +1,17 @@
+ codex/mostrar-estructura-de-archivos
+import { useState } from "react";
+
+ main
 import { Navigate, useNavigate } from "react-router-dom";
 
 import { authRepository } from "../repositories/authRepository";
+import { bookRepository } from "../repositories/bookRepository";
+
+ codex/mostrar-estructura-de-archivos
+const recentActivity = [
+  "Reserva confirmada para Clean Code",
+  "Nuevo material agregado a la categoría Ciencia",
+  "Recuerda devolver tus préstamos antes de la fecha límite",
 
 const quickStats = [
   {
@@ -42,12 +53,40 @@ const recentActivity = [
   "Reserva confirmada para Arquitectura limpia",
   "Devolución pendiente: Historia universal ilustrada",
   "Nuevo material agregado a Tecnología",
+ main
 ];
 
 function HomePage() {
   const navigate = useNavigate();
   const user = authRepository.getCurrentUser();
+  const [searchTerm, setSearchTerm] = useState("");
 
+  const books = bookRepository.getAll();
+  const filteredBooks = bookRepository.search(searchTerm);
+  const availableBooks = books.filter((book) => book.status === "Disponible").length;
+  const reservedBooks = books.filter((book) => book.status === "Reservado").length;
+
+ codex/mostrar-estructura-de-archivos
+  const quickStats = [
+    {
+      label: "Libros registrados",
+      value: books.length.toString().padStart(2, "0"),
+      helper: "Catálogo base listo",
+    },
+    {
+      label: "Disponibles",
+      value: availableBooks.toString().padStart(2, "0"),
+      helper: "Listos para préstamo",
+    },
+    {
+      label: "Reservados",
+      value: reservedBooks.toString().padStart(2, "0"),
+      helper: "Con seguimiento activo",
+    },
+  ];
+
+
+ main
   const handleLogout = () => {
     authRepository.logout();
     navigate("/login", { replace: true });
@@ -58,7 +97,10 @@ function HomePage() {
   }
 
   return (
+ codex/mostrar-estructura-de-archivos
+
     
+ main
     <main className="home-page">
       <nav className="home-nav" aria-label="Navegación principal">
         <a className="home-nav__brand" href="#inicio">
@@ -71,6 +113,23 @@ function HomePage() {
           <a href="#actividad">Actividad</a>
           <a href="#perfil">Perfil</a>
         </div>
+ codex/mostrar-estructura-de-archivos
+
+        <button className="home-nav__logout" type="button" onClick={handleLogout}>
+          Cerrar sesión
+        </button>
+      </nav>
+
+      <section className="home-hero" id="inicio">
+        <div className="home-hero__content">
+          <span className="home-kicker">Inicio</span>
+          <h1>Bienvenido, {user.name}</h1>
+          <p>
+            Explora el catálogo, revisa disponibilidad y encuentra rápidamente
+            los libros principales de la biblioteca.
+          </p>
+
+
 
         <button className="home-nav__logout" type="button" onClick={handleLogout}>
           Cerrar sesión
@@ -88,16 +147,28 @@ function HomePage() {
             desde una página principal clara, moderna y conectada con tu biblioteca.
           </p>
 
+ main
           <div className="home-search" role="search">
             <label htmlFor="book-search">Buscar en biblioteca</label>
             <div>
               <input
                 id="book-search"
                 name="book-search"
+ codex/mostrar-estructura-de-archivos
+                onChange={(event) => setSearchTerm(event.target.value)}
+                placeholder="Buscar por título, autor, año o categoría"
+                type="search"
+                value={searchTerm}
+              />
+              <button type="button" onClick={() => setSearchTerm("")}>
+                Limpiar
+              </button>
+
                 placeholder="Buscar por título, autor o categoría"
                 type="search"
               />
               <button type="button">Buscar</button>
+ main
             </div>
           </div>
         </div>
@@ -127,6 +198,32 @@ function HomePage() {
         <article className="home-panel" id="catalogo">
           <div className="home-panel__header">
             <span className="home-kicker">Catálogo destacado</span>
+ codex/mostrar-estructura-de-archivos
+            <h2>5 libros agregados</h2>
+            <p>
+              Mostrando {filteredBooks.length} de {books.length} libros del catálogo.
+            </p>
+          </div>
+
+          <div className="home-books">
+            {filteredBooks.map((book) => (
+              <article className="home-book" key={book.id}>
+                <div className="home-book__cover" aria-hidden="true">
+                  {book.title.charAt(0)}
+                </div>
+                <div className="home-book__content">
+                  <span>{book.category}</span>
+                  <h3>{book.title}</h3>
+                  <p>
+                    {book.author} · {book.year}
+                  </p>
+                  <p>{book.description}</p>
+                  <strong
+                    className={`home-book__status home-book__status--${book.status.toLowerCase()}`}
+                  >
+                    {book.status}
+                  </strong>
+
             <h2>Libros para empezar hoy</h2>
           </div>
 
@@ -141,6 +238,7 @@ function HomePage() {
                   <span>{book.tag}</span>
                   <h3>{book.title}</h3>
                   <p>{book.author}</p>
+ main
                 </div>
               </article>
             ))}
@@ -149,7 +247,15 @@ function HomePage() {
 
         <article className="home-panel home-panel--accent" id="actividad">
           <span className="home-kicker">Actividad reciente</span>
+ codex/mostrar-estructura-de-archivos
+          <h2>Proyecto listo</h2>
+          <p>
+            El Home ya conecta usuarios, cierre de sesión, búsqueda y catálogo inicial
+            de libros para continuar construyendo la biblioteca.
+          </p>
+
           <h2>Todo al día</h2>
+ main
           <ul className="home-activity">
             {recentActivity.map((activity) => (
               <li key={activity}>{activity}</li>
@@ -161,4 +267,8 @@ function HomePage() {
   );
 }
 
+ codex/mostrar-estructura-de-archivos
 export default HomePage;
+
+export default HomePage;
+ main

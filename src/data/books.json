@@ -1,0 +1,47 @@
+[
+  {
+    "id": "book-1",
+    "title": "Cien años de soledad",
+    "author": "Gabriel García Márquez",
+    "category": "Literatura",
+    "year": 1967,
+    "status": "Disponible",
+    "description": "Una novela esencial del realismo mágico y de la literatura latinoamericana."
+  },
+  {
+    "id": "book-2",
+    "title": "Clean Code",
+    "author": "Robert C. Martin",
+    "category": "Programación",
+    "year": 2008,
+    "status": "Reservado",
+    "description": "Guía práctica para escribir código claro, mantenible y profesional."
+  },
+  {
+    "id": "book-3",
+    "title": "Breve historia del tiempo",
+    "author": "Stephen Hawking",
+    "category": "Ciencia",
+    "year": 1988,
+    "status": "Disponible",
+    "description": "Una introducción accesible al universo, los agujeros negros y el tiempo."
+  },
+  {
+    "id": "book-4",
+    "title": "El principito",
+    "author": "Antoine de Saint-Exupéry",
+    "category": "Clásicos",
+    "year": 1943,
+    "status": "Disponible",
+    "description": "Una historia breve y profunda sobre amistad, imaginación y humanidad."
+  },
+  {
+    "id": "book-5",
+    "title": "Don Quijote de la Mancha",
+    "author": "Miguel de Cervantes",
+    "category": "Clásicos",
+    "year": 1605,
+    "status": "Prestado",
+    "description": "La gran obra de la narrativa española sobre aventuras, ideales y locura."
+  }
+]

@@ -4548,3 +4548,11 @@ input,select,textarea {
   .sketch-hero--admin-art .sketch-welcome-copy {top:24px;left:18px;width:calc(100% - 36px);text-align:center}
   .sketch-welcome-copy h1 {font-size:27px}
 }
+
+
+/* HERO: eliminar el marco interior y conservar el espacio de la página */
+.sketch-hero--admin-art {
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+}

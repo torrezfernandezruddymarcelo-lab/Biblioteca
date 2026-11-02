@@ -1,167 +1,170 @@
-import { useState } from "react";
+
 import { Link, Navigate, useNavigate } from "react-router-dom";
 
 import { authRepository } from "../repositories/authRepository";
 import { bookRepository } from "../repositories/bookRepository";
-
-const recentActivity = [
-  "Reserva confirmada para Clean Code",
-  "Nuevo material agregado a la categoría Ciencia",
-  "Recuerda devolver tus préstamos antes de la fecha límite",
-];
+import { bookRequestRepository } from "../repositories/bookRequestRepository";
 
 function HomePage() {
   const navigate = useNavigate();
   const user = authRepository.getCurrentUser();
-  const [searchTerm, setSearchTerm] = useState("");
+
+  if (!user) return <Navigate to="/login" replace />;
 
   const books = bookRepository.getAll();
-  const filteredBooks = bookRepository.search(searchTerm);
-  const availableBooks = books.filter((book) => book.status === "Disponible").length;
-  const reservedBooks = books.filter((book) => book.status === "Reservado").length;
+  const available = books.filter(
+    (book) => book.status === "Disponible"
+  ).length;
 
-  const quickStats = [
-    {
-      label: "Libros registrados",
-      value: books.length.toString().padStart(2, "0"),
-      helper: "Catálogo base listo",
-    },
-    {
-      label: "Disponibles",
-      value: availableBooks.toString().padStart(2, "0"),
-      helper: "Listos para préstamo",
-    },
-    {
-      label: "Reservados",
-      value: reservedBooks.toString().padStart(2, "0"),
-      helper: "Con seguimiento activo",
-    },
-  ];
+  const requests = bookRequestRepository.getByUser(user.id);
 
-  const handleLogout = () => {
+  const isAdmin = authRepository.isAdmin();
+  const isPrincipalAdmin = authRepository.isPrincipalAdmin();
+
+  const logout = () => {
     authRepository.logout();
     navigate("/login", { replace: true });
   };
 
-  if (!user) {
-    return <Navigate to="/login" replace />;
-  }
-
   return (
-    <main className="home-page">
-      <nav className="home-nav" aria-label="Navegación principal">
-        <a className="home-nav__brand" href="#inicio">
-          <span aria-hidden="true">B</span>
-          Biblioteca
-        </a>
+    <main className="sketch-page">
+      <header className="sketch-header">
+        <Link className="sketch-logo" to="/">
+          <span>B</span> Biblioteca Galáctica
+        </Link>
 
-        <div className="home-nav__links">
-          <a href="#catalogo">Catálogo</a>
-          <a href="#actividad">Actividad</a>
-          <a href="#perfil">Perfil</a>
-        </div>
+        <nav className="sketch-nav">
+          <Link to="/">Inicio</Link>
 
-        <button className="home-nav__logout" type="button" onClick={handleLogout}>
+          <Link to="/books">Catálogo</Link>
+
+          {isAdmin && (
+            <Link to="/admin/libros/nuevo">
+              Agregar libros
+            </Link>
+          )}
+
+          {isAdmin && (
+            <Link to="/admin/solicitudes-libros">
+              Solicitudes
+            </Link>
+          )}
+
+          {isPrincipalAdmin && (
+            <Link to="/admin/solicitudes-administrador">
+              Solicitudes de administradores
+            </Link>
+          )}
+        </nav>
+
+        <button className="sketch-profile" onClick={logout}>
           Cerrar sesión
         </button>
-      </nav>
+      </header>
 
-      <section className="home-hero" id="inicio">
-        <div className="home-hero__content">
-          <span className="home-kicker">Inicio</span>
-          <h1>Bienvenido, {user.name}</h1>
+      <section className="sketch-hero">
+        <div className="sketch-hero-copy">
+          <span className="sketch-kicker">
+            BIENVENIDO A TU BIBLIOTECA
+          </span>
+
+          <h1>¡Hola, {user.name}!</h1>
+
           <p>
-            Explora el catálogo, revisa disponibilidad y encuentra rápidamente
-            los libros principales de la biblioteca.
+            Prepárate para explorar nuevas historias, aprender y encontrar
+            tu próxima aventura entre miles de páginas.
           </p>
 
-          <div className="home-search" role="search">
-            <label htmlFor="book-search">Buscar en biblioteca</label>
-            <div>
-              <input
-                id="book-search"
-                name="book-search"
-                onChange={(event) => setSearchTerm(event.target.value)}
-                placeholder="Buscar por título, autor, año o categoría"
-                type="search"
-                value={searchTerm}
-              />
-              <button type="button" onClick={() => setSearchTerm("")}>
-                Limpiar
-              </button>
-            </div>
-          </div>
+          <Link className="sketch-button" to="/books">
+            Explorar libros
+          </Link>
         </div>
 
-        <aside className="home-profile-card" id="perfil" aria-label="Datos del usuario">
-          <div className="home-profile-card__avatar" aria-hidden="true">
-            {user.name.charAt(0)}
+        <div className="sketch-space-scene" aria-hidden="true">
+          <div className="sketch-planet-large" />
+          <div className="sketch-planet-small" />
+          <div className="sketch-star">✦</div>
+          <div className="sketch-star sketch-star-two">✧</div>
+          <div className="sketch-platform" />
+
+          <div className="sketch-hero-robot">
+            <div className="robot-eye robot-eye-left" />
+            <div className="robot-eye robot-eye-right" />
+            <div className="robot-mouth" />
           </div>
-          <span>Sesión activa</span>
-          <h2>{user.name}</h2>
-          <p>Carnet: {user.carnet}</p>
-          <p>Rol: {user.role}</p>
-        </aside>
+        </div>
       </section>
 
-      <section className="home-stats" aria-label="Resumen de biblioteca">
-        {quickStats.map((stat) => (
-          <article className="home-stat" key={stat.label}>
-            <span>{stat.label}</span>
-            <strong>{stat.value}</strong>
-            <p>{stat.helper}</p>
-          </article>
-        ))}
+      <section className="sketch-stats">
+        <article>
+          <span>Libros registrados</span>
+          <strong>{books.length}</strong>
+        </article>
+
+        <article>
+          <span>Libros disponibles</span>
+          <strong>{available}</strong>
+        </article>
+
+        <article>
+          <span>Mis solicitudes</span>
+          <strong>{requests.length}</strong>
+        </article>
       </section>
 
-      <section className="home-grid">
-        <article className="home-panel" id="catalogo">
-          <div className="home-panel__header">
-            <span className="home-kicker">Catálogo destacado</span>
-            <h2>5 libros agregados</h2>
-            <p>
-              Mostrando {filteredBooks.length} de {books.length} libros del catálogo.
-            </p>
-          </div>
+      <section className="sketch-catalog">
+        <div className="sketch-section-heading">
+          <span className="sketch-kicker">
+            TU ESPACIO DE LECTURA
+          </span>
 
-          <div className="home-books">
-            {filteredBooks.map((book) => (
-              <Link className="home-book" key={book.id} to={`/books/${book.id}`}>
-                <div className="home-book__cover" aria-hidden="true">
-                  {book.title.charAt(0)}
-                </div>
-                <div className="home-book__content">
-                  <span>{book.category}</span>
-                  <h3>{book.title}</h3>
-                  <p>
-                    {book.author} · {book.year}
-                  </p>
-                  <p>{book.description}</p>
-                  <strong
-                    className={`home-book__status home-book__status--${book.status.toLowerCase()}`}
-                  >
-                    {book.status}
-                  </strong>
+          <h2>Continúa tu aventura</h2>
+
+          <p>
+            Explora el catálogo y encuentra algo nuevo para leer.
+          </p>
+
+          <Link className="sketch-button" to="/books">
+            Ver todo el catálogo
+          </Link>
+        </div>
+
+        <div className="sketch-book-grid">
+          {books.slice(0, 4).map((book, index) => (
+            <article className="sketch-book-card" key={book.id}>
+              <Link to={`/books/${book.id}`}>
+                <div
+                  className={`sketch-cover ${
+                    [
+                      "cover-blue",
+                      "cover-purple",
+                      "cover-orange",
+                      "cover-green",
+                    ][index % 4]
+                  }`}
+                >
+                  <span>{book.title.charAt(0).toUpperCase()}</span>
+                  <strong>{book.title}</strong>
                 </div>
               </Link>
-            ))}
-          </div>
-        </article>
 
-        <article className="home-panel home-panel--accent" id="actividad">
-          <span className="home-kicker">Actividad reciente</span>
-          <h2>Proyecto listo</h2>
-          <p>
-            El Home ya conecta usuarios, cierre de sesión, búsqueda y catálogo inicial
-            de libros para continuar construyendo la biblioteca.
-          </p>
-          <ul className="home-activity">
-            {recentActivity.map((activity) => (
-              <li key={activity}>{activity}</li>
-            ))}
-          </ul>
-        </article>
+              <div className="sketch-book-info">
+                <h3>{book.title}</h3>
+                <p>{book.author}</p>
+                <strong>{book.status}</strong>
+
+                <Link to={`/books/${book.id}`}>
+                  Ver libro →
+                </Link>
+              </div>
+            </article>
+          ))}
+        </div>
       </section>
+
+      <footer className="sketch-footer">
+        Biblioteca Galáctica · La lectura también es una aventura.
+      </footer>
     </main>
   );
 }

@@ -49,7 +49,8 @@ function AdminBookCreatePage() {
   };
 
   return (
-    <main className="sketch-page">\n      <GlobalNavigation />
+    <main className="sketch-page">
+      <GlobalNavigation />
       <header className="sketch-header">
         <Link className="sketch-logo" to="/">B Biblioteca Galáctica</Link>
         <nav className="sketch-nav">

@@ -4668,3 +4668,50 @@ body {
 @media(max-width:520px){.catalog-robot-scene{min-height:330px;transform:scale(.88);margin:-15px 0}.catalog-hero-copy h1{font-size:34px}.catalog-hero-copy p{font-size:14px}}
 
 
+
+/* AJUSTES RESPONSIVE SEGUROS PARA LA INTERFAZ GALÁCTICA */
+@media (max-width: 900px) {
+  .sketch-header { flex-wrap: wrap; justify-content: center; gap: 12px; }
+  .sketch-nav { flex: 1 1 100%; order: 3; }
+  .sketch-profile { margin-left: auto; }
+  .sketch-book-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .sketch-hero { padding: 30px; }
+}
+@media (max-width: 600px) {
+  .sketch-page { width: min(100% - 22px, 1450px); }
+  .sketch-header { align-items: stretch; padding: 13px; margin-top: 10px; }
+  .sketch-logo { justify-content: center; }
+  .sketch-nav { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); width: 100%; gap: 7px; }
+  .sketch-nav a { text-align: center; padding: 10px 6px; font-size: 12px; }
+  .sketch-profile { justify-content: center; margin: 0; width: 100%; }
+  .sketch-hero { min-height: 0; padding: 24px 18px; border-radius: 22px; }
+  .sketch-hero--catalog-art { grid-template-columns: 1fr; min-height: auto; padding: 16px 10px; }
+  .catalog-robot-scene { min-height: 330px; width: 100%; order: 2; margin: -8px 0; transform: scale(.88); }
+  .catalog-hero-copy { width: 100%; order: 1; text-align: center; padding: 14px 4px; }
+  .catalog-hero-copy h1 { font-size: clamp(27px, 8vw, 38px); }
+  .catalog-hero-copy p { font-size: 14px; margin-left: auto; margin-right: auto; }
+  .sketch-catalog { padding-left: 2px; padding-right: 2px; }
+  .sketch-search { width: 100%; }
+  .sketch-filters { display: flex; flex-wrap: wrap; gap: 7px; }
+  .sketch-filters button { padding: 8px 11px; font-size: 12px; }
+  .sketch-book-grid { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+  .sketch-book-card { min-width: 0; }
+  .sketch-cover { min-height: 190px; }
+  .sketch-book-info { overflow-wrap: anywhere; }
+  .sketch-footer { text-align: center; padding: 18px 8px; }
+  .astro-stats, .astro-mission-grid { grid-template-columns: 1fr; }
+  .astro-navbar { flex-wrap: wrap; justify-content: center; padding: 12px; }
+  .astro-navigation { width: 100%; }
+  .astro-hero { padding: 24px 18px; }
+  .astro-hero-content { width: 100%; }
+  .astro-planet-scene { position: relative; width: 100%; min-height: 220px; }
+  .astro-book-grid { grid-template-columns: minmax(0, 1fr); }
+  .books-hero { padding: 24px 18px; }
+  .books-hero-robot { opacity: .35; }
+}
+@media (max-width: 360px) {
+  .sketch-page { width: calc(100% - 16px); }
+  .sketch-logo { font-size: 14px; }
+  .sketch-nav a { font-size: 11px; }
+  .sketch-hero { padding: 18px 13px; }
+}

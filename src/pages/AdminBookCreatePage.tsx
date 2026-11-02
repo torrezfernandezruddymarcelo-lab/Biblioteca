@@ -41,7 +41,6 @@ function AdminBookCreatePage() {
       category: category.trim(),
       year: numericYear,
       description: description.trim(),
-      status: "Disponible",
       ...(pdfUrl.trim() ? { pdfUrl: pdfUrl.trim() } : {}),
     });
 

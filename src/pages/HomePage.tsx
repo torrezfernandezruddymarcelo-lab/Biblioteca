@@ -62,8 +62,8 @@ function HomePage() {
         </button>
       </header>
 
-      <section className="sketch-hero">
-        <div className="sketch-hero-copy">
+      <section className={`sketch-hero ${isAdmin ? "sketch-hero--admin-art" : ""}`}>
+        {!isAdmin && <div className="sketch-hero-copy">
           <span className="sketch-kicker">
             BIENVENIDO A TU BIBLIOTECA
           </span>
@@ -78,7 +78,7 @@ function HomePage() {
           <Link className="sketch-button" to="/books">
             Explorar libros
           </Link>
-        </div>
+        </div>}
 
         <div className="sketch-space-scene" aria-hidden="true">
           <div className="sketch-planet-large" />

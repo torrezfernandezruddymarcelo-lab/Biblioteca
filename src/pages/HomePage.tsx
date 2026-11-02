@@ -83,6 +83,9 @@ function HomePage() {
         <div className="sketch-space-scene" aria-hidden="true">
           <div className="sketch-planet-large" />
           <div className="sketch-planet-small" />
+          <div className="sketch-planet-medium" />
+          <div className="sketch-planet-ringed" />
+          <div className="sketch-moon" />
           <div className="sketch-star">✦</div>
           <div className="sketch-star sketch-star-two">✧</div>
           <div className="sketch-platform" />

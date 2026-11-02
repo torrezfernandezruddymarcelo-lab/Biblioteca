@@ -7,15 +7,27 @@ const BOOKS_KEY = "biblioteca_books";
 const getBooks = (): Book[] => {
   const storedBooks = storageService.get<Book[]>(BOOKS_KEY);
   const defaults = initialBooks as Book[];
-  const books = storedBooks ?? defaults;
 
-  return books.map(({ status: _status, ...book }) => {
-    const defaultBook = defaults.find((item) => item.id === book.id);
-    return {
-      ...book,
-      pdfUrl: book.pdfUrl || defaultBook?.pdfUrl,
-    } as Book;
+  if (!storedBooks) return defaults;
+
+  // Mantiene los libros guardados y agrega los nuevos del catálogo inicial
+  // que todavía no existen en el almacenamiento local del navegador.
+  const mergedBooks = [...storedBooks];
+  defaults.forEach((defaultBook) => {
+    const existingIndex = mergedBooks.findIndex((book) => book.id === defaultBook.id);
+
+    if (existingIndex === -1) {
+      mergedBooks.push(defaultBook);
+    } else {
+      mergedBooks[existingIndex] = {
+        ...defaultBook,
+        ...mergedBooks[existingIndex],
+        pdfUrl: mergedBooks[existingIndex].pdfUrl || defaultBook.pdfUrl,
+      };
+    }
   });
+
+  return mergedBooks.map(({ status: _status, ...book }) => book as Book);
 };
 
 const saveBooks = (books: Book[]) => {

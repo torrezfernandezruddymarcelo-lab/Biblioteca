@@ -10,7 +10,7 @@ function BooksPage() {
   const navigate = useNavigate();
   const user = authRepository.getCurrentUser();
 
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState(() => new URLSearchParams(window.location.search).get("search") ?? "");
   const [category, setCategory] = useState("Todas");
   const [refresh, setRefresh] = useState(0);
 

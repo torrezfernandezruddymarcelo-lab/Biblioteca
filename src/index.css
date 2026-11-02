@@ -3872,3 +3872,173 @@ input,select,textarea {
   .sketch-hero--admin-art .sketch-planet-small { width: 65px; height: 65px; }
   .sketch-hero--admin-art .sketch-platform { width: 110%; }
 }
+
+
+/* REDISENO DEL ROBOT Y SISTEMA PLANETARIO ANIMADO */
+.sketch-hero--admin-art .sketch-hero-robot {
+  height: clamp(390px, 43vw, 570px);
+  border: 7px solid #eafaff;
+  border-radius: 38% 38% 27% 27% / 34% 34% 22% 22%;
+  background:
+    radial-gradient(ellipse at 32% 13%, rgba(255,255,255,.98), transparent 24%),
+    linear-gradient(115deg,#f8fdff 0%,#c9eaff 32%,#7cb6e8 68%,#315b9b 100%);
+  box-shadow:
+    inset -24px -20px 35px rgba(18,54,112,.45),
+    inset 12px 12px 22px rgba(255,255,255,.95),
+    0 0 0 12px rgba(100,220,255,.12),
+    0 25px 48px rgba(0,0,0,.5),
+    0 0 55px rgba(65,211,255,.58);
+  animation: robot-hover 4.2s ease-in-out infinite;
+}
+.sketch-hero--admin-art .sketch-hero-robot::before {
+  left: 12%;
+  top: 25%;
+  width: 76%;
+  height: 37%;
+  border: 5px solid rgba(190,239,255,.85);
+  border-radius: 30% 30% 25% 25%;
+  background:
+    radial-gradient(ellipse at 28% 20%,rgba(85,160,220,.25),transparent 60%),
+    linear-gradient(145deg,#06142e,#123d70 65%,#07162e);
+  box-shadow: inset 0 0 24px #40caff, 0 0 22px rgba(44,207,255,.55);
+}
+.sketch-hero--admin-art .sketch-hero-robot::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 22%;
+  height: 34%;
+  left: -19%;
+  top: 43%;
+  border: 5px solid #c7eaff;
+  border-radius: 45% 20% 45% 35%;
+  background: linear-gradient(145deg,#eafaff,#679bd0);
+  box-shadow: 0 8px 18px rgba(0,0,0,.3), 0 0 18px rgba(67,211,255,.4);
+  transform: rotate(-16deg);
+}
+.sketch-hero--admin-art .robot-eye {
+  top: 36%;
+  width: 7%;
+  height: 12%;
+  border-radius: 45%;
+  animation: robot-blink 5.5s infinite;
+}
+.sketch-hero--admin-art .robot-eye-left { left: 29%; }
+.sketch-hero--admin-art .robot-eye-right { right: 29%; }
+.sketch-hero--admin-art .robot-mouth {
+  top: 55%;
+  left: 44%;
+  width: 12%;
+  height: 4%;
+  border-radius: 20px;
+  box-shadow: 0 0 14px #6eeeff;
+}
+.sketch-hero--admin-art .sketch-planet-large {
+  animation: planet-drift 18s ease-in-out infinite, planet-turn 42s linear infinite;
+}
+.sketch-hero--admin-art .sketch-planet-small {
+  animation: planet-drift 12s ease-in-out infinite reverse, planet-turn 28s linear infinite;
+}
+.sketch-planet-medium, .sketch-planet-ringed, .sketch-moon {
+  position: absolute;
+  display: block;
+  border-radius: 50%;
+  pointer-events: none;
+}
+.sketch-planet-medium {
+  width: clamp(105px, 13vw, 180px);
+  height: clamp(105px, 13vw, 180px);
+  left: 24%;
+  top: 12%;
+  z-index: 1;
+  background: radial-gradient(circle at 30% 25%,#fff0d4 0%,#f5a66d 28%,#b54e9a 65%,#442a72 100%);
+  box-shadow: inset -18px -14px 25px rgba(20,8,55,.55),0 0 35px rgba(242,127,199,.4);
+  animation: planet-drift 15s ease-in-out infinite, planet-turn 36s linear infinite;
+}
+.sketch-planet-ringed {
+  width: clamp(85px, 10vw, 135px);
+  height: clamp(85px, 10vw, 135px);
+  right: 24%;
+  bottom: 17%;
+  z-index: 2;
+  background: radial-gradient(circle at 32% 25%,#e5ffe9,#62cba9 38%,#226e83 78%);
+  box-shadow: inset -15px -12px 20px rgba(0,20,50,.5),0 0 28px rgba(88,255,211,.35);
+  animation: planet-drift 13s ease-in-out infinite reverse;
+}
+.sketch-planet-ringed::after {
+  content: "";
+  position: absolute;
+  width: 165%;
+  height: 38%;
+  left: -33%;
+  top: 33%;
+  border: 7px solid rgba(178,239,255,.78);
+  border-left-color: rgba(178,239,255,.25);
+  border-right-color: rgba(178,239,255,.45);
+  border-radius: 50%;
+  transform: rotate(-22deg);
+  box-shadow: 0 0 15px rgba(120,224,255,.5);
+}
+.sketch-moon {
+  width: 42px;
+  height: 42px;
+  right: 12%;
+  top: 48%;
+  z-index: 2;
+  background: radial-gradient(circle at 30% 25%,#fff,#b8c9e8 48%,#687eaa);
+  box-shadow: 0 0 22px rgba(204,224,255,.55);
+  animation: moon-orbit 10s ease-in-out infinite;
+}
+.sketch-hero--admin-art .sketch-star {
+  animation: star-twinkle 2.4s ease-in-out infinite alternate;
+}
+.sketch-hero--admin-art .sketch-star-two { animation-delay: .8s; }
+.sketch-hero--admin-art .sketch-platform {
+  animation: platform-glow 3s ease-in-out infinite alternate;
+}
+@keyframes robot-hover {
+  0%,100% { transform: translateX(-50%) translateY(0) rotate(-1deg); }
+  50% { transform: translateX(-50%) translateY(-18px) rotate(1deg); }
+}
+@keyframes robot-blink {
+  0%,44%,48%,100% { transform: scaleY(1); }
+  46% { transform: scaleY(.12); }
+}
+@keyframes planet-drift {
+  0%,100% { translate: 0 0; }
+  50% { translate: 12px -18px; }
+}
+@keyframes planet-turn { to { filter: hue-rotate(360deg); } }
+@keyframes moon-orbit {
+  0%,100% { transform: translate(0,0); }
+  50% { transform: translate(-22px,-16px); }
+}
+@keyframes star-twinkle {
+  from { opacity: .35; transform: scale(.75) rotate(0deg); }
+  to { opacity: 1; transform: scale(1.2) rotate(24deg); }
+}
+@keyframes platform-glow {
+  from { filter: brightness(.85); }
+  to { filter: brightness(1.25); }
+}
+@media (max-width: 850px) {
+  .sketch-hero--admin-art .sketch-hero-robot {
+    height: min(82vw, 470px);
+    animation-name: robot-hover-mobile;
+  }
+  .sketch-planet-medium { left: 8%; top: 20%; }
+  .sketch-planet-ringed { right: 7%; bottom: 22%; }
+}
+@keyframes robot-hover-mobile {
+  0%,100% { transform: translateX(-50%) translateY(0) rotate(-1deg); }
+  50% { transform: translateX(-50%) translateY(-12px) rotate(1deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .sketch-hero--admin-art *,
+  .sketch-hero--admin-art *::before,
+  .sketch-hero--admin-art *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}

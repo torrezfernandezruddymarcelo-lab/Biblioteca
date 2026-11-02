@@ -6,7 +6,16 @@ const BOOKS_KEY = "biblioteca_books";
 
 const getBooks = (): Book[] => {
   const storedBooks = storageService.get<Book[]>(BOOKS_KEY);
-  return (storedBooks ?? (initialBooks as Book[])).map(({ status: _status, ...book }) => book as Book);
+  const defaults = initialBooks as Book[];
+  const books = storedBooks ?? defaults;
+
+  return books.map(({ status: _status, ...book }) => {
+    const defaultBook = defaults.find((item) => item.id === book.id);
+    return {
+      ...book,
+      pdfUrl: book.pdfUrl || defaultBook?.pdfUrl,
+    } as Book;
+  });
 };
 
 const saveBooks = (books: Book[]) => {

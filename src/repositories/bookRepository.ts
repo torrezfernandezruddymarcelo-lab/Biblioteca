@@ -5,7 +5,8 @@ import type { Book } from "../types/book";
 const BOOKS_KEY = "biblioteca_books";
 
 const getBooks = (): Book[] => {
-  return storageService.get<Book[]>(BOOKS_KEY) ?? (initialBooks as Book[]);
+  const storedBooks = storageService.get<Book[]>(BOOKS_KEY);
+  return (storedBooks ?? (initialBooks as Book[])).map(({ status: _status, ...book }) => book as Book);
 };
 
 const saveBooks = (books: Book[]) => {
@@ -27,13 +28,7 @@ export const bookRepository = {
     if (!normalized) return getBooks();
 
     return getBooks().filter((book) =>
-      [
-        book.title,
-        book.author,
-        book.category,
-        book.status,
-        String(book.year),
-      ]
+      [book.title, book.author, book.category, String(book.year)]
         .join(" ")
         .toLowerCase()
         .includes(normalized)
@@ -42,7 +37,6 @@ export const bookRepository = {
 
   add(bookData: Omit<Book, "id">): Book {
     const books = getBooks();
-
     const newBook: Book = {
       ...bookData,
       id: crypto.randomUUID(),
@@ -59,17 +53,6 @@ export const bookRepository = {
     if (updated.length === books.length) return false;
 
     saveBooks(updated);
-    return true;
-  },
-
-  updateStatus(id: string, status: Book["status"]): boolean {
-    const books = getBooks();
-    const index = books.findIndex((book) => book.id === id);
-
-    if (index === -1) return false;
-
-    books[index] = { ...books[index], status };
-    saveBooks(books);
     return true;
   },
 };

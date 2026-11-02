@@ -67,7 +67,8 @@ function AdminRoleRequestsPage() {
   );
 
   return (
-    <main className="admin-page">\n      <GlobalNavigation />
+    <main className="admin-page">
+      <GlobalNavigation />
       <header className="admin-header">
         <div>
           <h1>Solicitudes de administradores</h1>

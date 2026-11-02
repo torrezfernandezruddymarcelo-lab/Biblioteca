@@ -36,7 +36,6 @@ function GlobalNavigation() {
           {isAdmin && <Link className={location.pathname === "/admin/libros/nuevo" ? "active" : ""} to="/admin/libros/nuevo">＋ <span>Agregar libros</span></Link>}
           {isAdmin && <Link className={location.pathname === "/admin/solicitudes-libros" ? "active" : ""} to="/admin/solicitudes-libros">▣ <span>Solicitudes</span></Link>}
           {isPrincipalAdmin && <Link className={location.pathname === "/admin/solicitudes-administrador" ? "active" : ""} to="/admin/solicitudes-administrador">♙ <span>Administradores</span></Link>}
-          {!isAdmin && <Link className={location.pathname === "/solicitar-administrador" ? "active" : ""} to="/solicitar-administrador">♙ <span>Ser administrador</span></Link>}
         </nav>
         <div className="library-sidebar-bottom">✦ <span>Explora. Aprende. Imagina.</span></div>
       </aside>

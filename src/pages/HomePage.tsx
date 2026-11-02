@@ -1,3 +1,4 @@
+import GlobalNavigation from "../components/GlobalNavigation";
 
 import { Link, Navigate, useNavigate } from "react-router-dom";
 
@@ -27,7 +28,7 @@ function HomePage() {
   };
 
   return (
-    <main className="sketch-page">
+    <main className="sketch-page">\n      <GlobalNavigation />
       <header className="sketch-header">
         <Link className="sketch-logo" to="/">
           <span>B</span> Biblioteca Galáctica

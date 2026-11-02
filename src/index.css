@@ -2610,3 +2610,197 @@ img {
     padding: 22px;
   }
 }
+
+
+/* ==========================================================
+   REDISEÑO 3D - BIBLIOTECA GALÁCTICA
+   Estética espacial luminosa, volúmenes y superficies glossy
+========================================================== */
+:root {
+  --space: #07152f;
+  --blue: #168cff;
+  --cyan: #66eaff;
+  --white: #f7fbff;
+  --muted: #c4d9f4;
+  --glass: rgba(17, 49, 91, .76);
+  --border: rgba(135, 220, 255, .48);
+}
+body {
+  background:
+    radial-gradient(ellipse at 50% 115%, rgba(16, 113, 221, .45), transparent 48%),
+    radial-gradient(ellipse at 85% 8%, rgba(89, 113, 255, .24), transparent 32%),
+    radial-gradient(ellipse at 10% 20%, rgba(45, 206, 255, .17), transparent 30%),
+    linear-gradient(160deg, #06142d 0%, #0a2450 52%, #10183f 100%);
+  background-attachment: fixed;
+}
+body::before {
+  opacity: .8;
+  background-image:
+    radial-gradient(2px 2px at 10% 20%, #fff 50%, transparent 100%),
+    radial-gradient(3px 3px at 30% 70%, #9defff 50%, transparent 100%),
+    radial-gradient(2px 2px at 75% 15%, #fff 50%, transparent 100%),
+    radial-gradient(2px 2px at 90% 65%, #b9caff 50%, transparent 100%),
+    radial-gradient(2px 2px at 55% 45%, #fff 50%, transparent 100%);
+  background-size: 230px 210px, 310px 280px, 270px 250px, 340px 300px, 180px 190px;
+}
+h1,h2,h3,h4 { text-shadow: 0 3px 18px rgba(70,190,255,.24); }
+a { color: #8deaff; }
+button,.button,.btn,.sketch-button {
+  border: 1px solid rgba(205,246,255,.7);
+  background: linear-gradient(180deg,#83efff 0%,#35b9ff 45%,#1673e8 100%);
+  color: #06234b;
+  box-shadow: 0 5px 0 #0750a4, 0 12px 25px rgba(0,125,255,.3), inset 0 2px 3px rgba(255,255,255,.75);
+  text-shadow: 0 1px rgba(255,255,255,.25);
+}
+button:hover,.button:hover,.btn:hover,.sketch-button:hover {
+  box-shadow: 0 7px 0 #0750a4, 0 18px 34px rgba(0,174,255,.4), inset 0 2px 4px rgba(255,255,255,.8);
+}
+input,select,textarea {
+  color: #f7fbff;
+  border: 1px solid rgba(126,211,255,.55);
+  background: linear-gradient(145deg,rgba(7,29,65,.96),rgba(14,49,91,.92));
+  box-shadow: inset 0 3px 10px rgba(0,0,0,.22),0 5px 15px rgba(0,0,0,.12);
+}
+.card,.book-card,.login-card,.admin-card,.stat-card,.panel,.dashboard-card {
+  border: 1px solid rgba(153,224,255,.52);
+  background: linear-gradient(145deg,rgba(35,91,145,.86),rgba(8,31,70,.94));
+  box-shadow: 0 18px 38px rgba(0,0,0,.28), inset 0 2px 0 rgba(255,255,255,.24), inset 0 -12px 24px rgba(0,16,55,.22);
+}
+.sketch-page {
+  background:
+    radial-gradient(ellipse at 50% 0%,rgba(48,150,255,.2),transparent 42%),
+    radial-gradient(ellipse at 90% 65%,rgba(72,93,255,.13),transparent 35%),
+    transparent;
+}
+.sketch-header {
+  position: sticky;
+  top: 10px;
+  z-index: 20;
+  width: min(1380px,94%);
+  min-height: 82px;
+  margin: 12px auto 0;
+  padding: 14px 25px;
+  border: 1px solid rgba(155,224,255,.48);
+  border-radius: 25px;
+  background: linear-gradient(135deg,rgba(27,75,126,.92),rgba(7,29,68,.94));
+  box-shadow: 0 12px 30px rgba(0,0,0,.28),inset 0 2px 0 rgba(255,255,255,.2);
+  backdrop-filter: blur(18px);
+}
+.sketch-logo span {
+  border: 2px solid white;
+  border-radius: 14px;
+  color: #063064;
+  background: linear-gradient(145deg,#fff,#8beaff);
+  box-shadow: 0 5px 0 #2186c6,0 0 22px rgba(89,224,255,.6),inset 0 2px 4px white;
+}
+.sketch-nav a {
+  padding: 9px 14px;
+  border: 1px solid transparent;
+  border-radius: 22px;
+  transition: .25s ease;
+}
+.sketch-nav a:hover {
+  border-color: rgba(142,229,255,.6);
+  background: linear-gradient(180deg,rgba(81,190,255,.3),rgba(23,98,190,.25));
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.2),0 5px 16px rgba(0,142,255,.2);
+}
+.sketch-profile,.sketch-book-card,.sketch-request-card,.sketch-stats article,.sketch-form-section,.sketch-empty {
+  border: 1px solid rgba(157,224,255,.48);
+  background: linear-gradient(145deg,rgba(43,101,158,.8),rgba(8,34,75,.94));
+  box-shadow: 0 16px 32px rgba(0,0,0,.25),inset 0 2px 0 rgba(255,255,255,.18),inset 0 -10px 22px rgba(0,14,49,.25);
+  backdrop-filter: blur(14px);
+}
+.sketch-hero {
+  max-width: 1380px;
+  min-height: 490px;
+  margin-top: 24px;
+  padding: 60px 6%;
+  border: 1px solid rgba(142,220,255,.38);
+  border-radius: 36px;
+  background:
+    radial-gradient(ellipse at 78% 45%,rgba(53,170,255,.25),transparent 38%),
+    linear-gradient(135deg,rgba(16,64,117,.7),rgba(7,26,66,.28));
+  box-shadow: 0 28px 65px rgba(0,0,0,.22),inset 0 2px 0 rgba(255,255,255,.12);
+}
+.sketch-hero h1 {
+  color: #fff;
+  text-shadow: 0 5px 25px rgba(49,180,255,.35);
+}
+.sketch-hero p,.sketch-section-heading p { color: #d2e7ff; }
+.sketch-space-scene { perspective: 900px; }
+.sketch-planet-large {
+  width: 270px;
+  height: 270px;
+  border: 1px solid rgba(207,247,255,.55);
+  background:
+    radial-gradient(circle at 28% 22%,#e6fdff 0%,#79dcff 12%,#3289df 40%,#174a9e 68%,#09245f 100%);
+  box-shadow: inset -35px -28px 45px rgba(0,15,61,.62),inset 12px 10px 25px rgba(255,255,255,.48),0 0 55px rgba(37,174,255,.5),0 35px 45px rgba(0,0,0,.32);
+  transform: rotateX(12deg);
+}
+.sketch-planet-large::after {
+  content:"";
+  position:absolute;
+  inset:18% 8%;
+  border-radius:50%;
+  border-top:12px solid rgba(195,244,255,.18);
+  transform:rotate(-24deg);
+  filter:blur(2px);
+}
+.sketch-planet-small {
+  border:1px solid rgba(255,255,255,.6);
+  background:radial-gradient(circle at 28% 22%,#fff5dc,#ffc66f 38%,#dc7958 75%,#713b65);
+  box-shadow:inset -10px -9px 15px rgba(70,25,48,.35),0 0 30px rgba(255,177,120,.4),0 12px 22px rgba(0,0,0,.25);
+}
+.sketch-platform {
+  height:48px;
+  border:2px solid rgba(205,242,255,.7);
+  background:linear-gradient(180deg,#c4f4ff 0%,#5caee5 28%,#285c9c 60%,#12366c 100%);
+  box-shadow:0 12px 0 #09234f,0 28px 35px rgba(0,0,0,.4),inset 0 4px 5px rgba(255,255,255,.7);
+  transform:rotateX(58deg);
+}
+.sketch-hero-robot {
+  border:5px solid #fff;
+  border-radius:48% 48% 38% 38%;
+  background:linear-gradient(145deg,#fff 0%,#eaf8ff 38%,#9abce0 100%);
+  box-shadow:inset -14px -15px 20px rgba(48,88,139,.38),inset 8px 8px 13px white,0 22px 35px rgba(0,0,0,.35),0 0 35px rgba(97,221,255,.35);
+  animation:floatRobot 4s ease-in-out infinite;
+}
+.sketch-hero-robot::before {
+  border:3px solid #d9f5ff;
+  background:linear-gradient(145deg,#071b3d,#173c69);
+  box-shadow:inset 0 4px 12px rgba(0,0,0,.7),0 2px 8px rgba(255,255,255,.3);
+}
+.robot-eye {
+  background:radial-gradient(circle at 35% 25%,#fff 0 12%,#a5f8ff 25%,#39cfff 65%,#0874d5 100%);
+  box-shadow:0 0 8px #fff,0 0 18px #48dcff;
+}
+.robot-mouth { box-shadow:0 0 10px #6eeeff; }
+.sketch-book-grid { gap:26px; }
+.sketch-book-card {
+  overflow:hidden;
+  border-radius:25px;
+  transition:transform .3s ease,box-shadow .3s ease;
+}
+.sketch-book-card:hover {
+  transform:translateY(-9px) rotateX(2deg);
+  box-shadow:0 25px 45px rgba(0,0,0,.35),0 0 25px rgba(63,190,255,.24),inset 0 2px 0 rgba(255,255,255,.2);
+}
+.sketch-cover {
+  min-height:235px;
+  border:1px solid rgba(255,255,255,.45);
+  box-shadow:inset 8px 8px 18px rgba(255,255,255,.18),inset -12px -12px 20px rgba(0,0,0,.2),0 12px 20px rgba(0,0,0,.25);
+}
+.sketch-stats article {
+  border-radius:24px;
+  transition:transform .25s ease;
+}
+.sketch-stats article:hover { transform:translateY(-6px); }
+.sketch-stats strong { text-shadow:0 0 22px rgba(85,223,255,.35); }
+.sketch-form-section { border-radius:28px; }
+.sketch-request-card { border-radius:22px; }
+.sketch-footer { color:#b8d5f5; }
+@media (max-width:650px) {
+  .sketch-header { position:relative; top:auto; }
+  .sketch-hero { border-radius:25px; }
+  .sketch-planet-large { width:190px;height:190px; }
+}

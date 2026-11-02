@@ -184,7 +184,6 @@ function BooksPage() {
 
                   <p>{book.year}</p>
 
-                  <strong>{book.status}</strong>
 
                   <Link to={`/books/${book.id}`}>
                     Ver detalles →

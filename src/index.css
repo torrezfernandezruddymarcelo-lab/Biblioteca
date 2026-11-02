@@ -4340,3 +4340,57 @@ input,select,textarea {
 .sketch-hero--admin-art .sketch-hero-robot {
   filter: drop-shadow(0 18px 22px rgba(0,0,0,.4)) drop-shadow(0 0 28px rgba(55,210,255,.5));
 }
+
+
+/* NAVEGACIÓN GLOBAL: barra lateral + búsqueda superior */
+.library-sidebar {
+  position: fixed; z-index: 1000; inset: 0 auto 0 0; width: 248px;
+  display: flex; flex-direction: column; padding: 25px 17px 18px;
+  background: linear-gradient(180deg,rgba(5,18,57,.97),rgba(8,10,43,.98));
+  border-right: 1px solid rgba(69,190,255,.35);
+  box-shadow: 12px 0 38px rgba(0,0,0,.22); backdrop-filter: blur(20px);
+}
+.library-sidebar-brand { display:flex; flex-direction:column; align-items:center; gap:7px; text-align:center; color:#fff; padding:5px 4px 19px; }
+.library-brand-book { font-size:48px; line-height:1.1; filter:drop-shadow(0 0 15px rgba(49,211,255,.65)); }
+.library-sidebar-brand strong { font-size:22px; line-height:1.05; letter-spacing:.3px; }
+.library-sidebar-brand em { color:#4bdfff; font-style:normal; }
+.library-sidebar-brand small { margin-top:5px; color:#86b9e8; font-size:9px; letter-spacing:2px; font-weight:900; }
+.library-sidebar-divider { height:1px; background:linear-gradient(90deg,transparent,rgba(73,191,255,.5),transparent); margin:4px 0 23px; }
+.library-menu-caption { padding:0 12px 10px; color:#78a9d9; font-size:10px; font-weight:900; letter-spacing:1.6px; }
+.library-side-links { display:flex; flex-direction:column; gap:7px; }
+.library-side-links a { display:flex; align-items:center; gap:13px; padding:12px 13px; color:#c8ddf8; border:1px solid transparent; border-radius:13px; font-size:19px; font-weight:900; transition:.2s; }
+.library-side-links a span { font-size:14px; }
+.library-side-links a:hover,.library-side-links a.active { color:#fff; border-color:rgba(63,202,255,.35); background:linear-gradient(100deg,rgba(0,151,255,.28),rgba(102,69,255,.2)); box-shadow:0 0 18px rgba(0,166,255,.16); }
+.library-sidebar-bottom { margin-top:auto; padding:14px 8px; color:#4bdfff; border-top:1px solid rgba(73,191,255,.2); font-weight:900; }
+.library-sidebar-bottom span { color:#91b5df; font-size:11px; }
+.library-topbar { position:fixed; z-index:999; top:0; left:248px; right:0; min-height:76px; display:flex; align-items:center; justify-content:space-between; gap:18px; padding:12px 30px; border-bottom:1px solid rgba(69,190,255,.25); background:rgba(4,14,47,.88); backdrop-filter:blur(18px); }
+.library-global-search { display:flex; align-items:center; gap:10px; width:min(620px,68%); padding:5px 7px 5px 15px; border:1px solid rgba(89,177,255,.4); border-radius:15px; background:rgba(3,15,48,.75); }
+.library-global-search > span { color:#65ddff; font-size:25px; }
+.library-global-search input { min-width:0; padding:9px 5px; border:0; background:transparent; box-shadow:none; }
+.library-global-search input:focus { box-shadow:none; }
+.library-global-search button { padding:8px 15px; border-radius:10px; white-space:nowrap; }
+.library-account { display:flex; align-items:center; gap:11px; color:#e8f5ff; font-weight:900; }
+.library-account-avatar { display:grid; place-items:center; width:39px; height:39px; border:1px solid rgba(83,207,255,.5); border-radius:50%; color:#65e4ff; background:rgba(0,140,255,.2); font-size:22px; }
+.library-account button { padding:8px 12px; border-radius:11px; }
+.sketch-page,.admin-page { padding-top:92px !important; padding-left:270px !important; padding-right:22px !important; }
+.sketch-header,.admin-header { display:none !important; }
+@media(max-width:800px) {
+ .library-sidebar { width:76px; padding:16px 8px; }
+ .library-sidebar-brand strong,.library-sidebar-brand small,.library-menu-caption,.library-side-links a span,.library-sidebar-bottom span { display:none; }
+ .library-brand-book { font-size:36px; }
+ .library-side-links a { justify-content:center; padding:12px 5px; font-size:21px; }
+ .library-topbar { left:76px; padding:10px 12px; min-height:68px; }
+ .library-global-search { width:100%; }
+ .library-global-search button { display:none; }
+ .library-account-name { display:none; }
+ .sketch-page,.admin-page { padding-top:82px !important; padding-left:90px !important; padding-right:12px !important; }
+}
+@media(max-width:480px) {
+ .library-sidebar { width:62px; }
+ .library-topbar { left:62px; gap:7px; padding:8px; }
+ .library-account { gap:5px; }
+ .library-account-avatar { width:34px; height:34px; }
+ .library-global-search { gap:5px; padding-left:9px; }
+ .library-global-search input { font-size:12px; }
+ .sketch-page,.admin-page { padding-left:72px !important; padding-right:8px !important; }
+}

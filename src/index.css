@@ -4220,3 +4220,14 @@ input,select,textarea {
     min-height: 470px;
   }
 }
+
+
+/* Quitar el óvalo de la frente para dejar los ojos despejados */
+.sketch-hero--admin-art .sketch-hero-robot::before {
+  content: none !important;
+  display: none !important;
+}
+.sketch-hero--admin-art .robot-eye {
+  display: block;
+  z-index: 3;
+}

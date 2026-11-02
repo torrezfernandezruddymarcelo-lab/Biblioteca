@@ -78,7 +78,6 @@ const [, setRefresh] = useState(0);
               >
                 <h3>{request.bookTitle}</h3>
 
-                <p>Solicitante: {request.userName}</p>
 
                 <p>Carnet: {request.carnet}</p>
 

@@ -1,3 +1,4 @@
+import GlobalNavigation from "../components/GlobalNavigation";
 import { useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 
@@ -48,7 +49,7 @@ function AdminBookCreatePage() {
   };
 
   return (
-    <main className="sketch-page">
+    <main className="sketch-page">\n      <GlobalNavigation />
       <header className="sketch-header">
         <Link className="sketch-logo" to="/">B Biblioteca Galáctica</Link>
         <nav className="sketch-nav">

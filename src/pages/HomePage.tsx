@@ -62,8 +62,8 @@ function HomePage() {
         </button>
       </header>
 
-      <section className={`sketch-hero ${isAdmin ? "sketch-hero--admin-art" : ""}`}>
-        {!isAdmin && <div className="sketch-hero-copy">
+      <section className="sketch-hero sketch-hero--admin-art">
+        {false && <div className="sketch-hero-copy">
           <span className="sketch-kicker">
             BIENVENIDO A TU BIBLIOTECA
           </span>

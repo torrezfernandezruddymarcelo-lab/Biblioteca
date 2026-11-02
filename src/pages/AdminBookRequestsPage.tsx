@@ -1,3 +1,4 @@
+import GlobalNavigation from "../components/GlobalNavigation";
 
 import { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
@@ -29,7 +30,7 @@ const [, setRefresh] = useState(0);
   };
 
   return (
-    <main className="sketch-page">
+    <main className="sketch-page">\n      <GlobalNavigation />
       <header className="sketch-header">
         <Link className="sketch-logo" to="/">
           B Biblioteca Galáctica

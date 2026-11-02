@@ -44,13 +44,7 @@ const [, setRefresh] = useState(0);
 
           <Link to="/admin/libros/nuevo">
             Agregar libros
-          </Link>
-
-          <Link to="/admin/solicitudes-libros">
-            Solicitudes
-          </Link>
-
-          {isPrincipalAdmin && (
+          </Link>{isPrincipalAdmin && (
             <Link to="/admin/solicitudes-administrador">
               Solicitudes de administradores
             </Link>

@@ -4518,3 +4518,33 @@ input,select,textarea {
 .robot-book-glow{position:absolute;z-index:2;left:47%;top:28%;color:#18bdf4;font-size:19px;text-shadow:0 0 12px #fff,0 0 20px #00cfff}
 @media(max-width:800px){.sketch-hero--admin-art .sketch-welcome-copy{top:8%;left:5%;width:48%;padding:18px;transform:none}.sketch-hero--admin-art .sketch-hero-robot{left:73%;width:300px}}
 @media(max-width:560px){.sketch-hero--admin-art{min-height:650px}.sketch-hero--admin-art .sketch-welcome-copy{top:24px;left:18px;width:calc(100% - 36px);padding:18px}.sketch-welcome-copy h1{font-size:27px}.sketch-welcome-copy p{font-size:13px;margin-bottom:8px}.sketch-hero--admin-art .sketch-hero-robot{left:50%;bottom:-5%;width:280px;transform:translateX(-50%) scale(.82);transform-origin:bottom center}}
+
+
+/* BIENVENIDA INTEGRADA EN LA ESCENA Y EXPRESIÓN SONRIENTE DEL ROBOT */
+.sketch-hero--admin-art .sketch-welcome-copy {
+  position:absolute; z-index:5; top:50%; left:clamp(28px,6vw,82px);
+  width:min(43%,510px); transform:translateY(-50%); padding:0;
+  border:0; border-radius:0; background:transparent; box-shadow:none;
+  backdrop-filter:none;
+}
+.sketch-welcome-copy h1 {
+  margin:0; color:#fff; font-size:clamp(30px,3.8vw,52px);
+  line-height:1.16; font-weight:800; text-shadow:0 3px 28px rgba(46,172,255,.55);
+}
+.sketch-welcome-copy h1 span {
+  display:block; color:#80eaff; text-shadow:0 0 24px rgba(70,207,255,.48);
+}
+.sketch-hero--admin-art .robot-mouth {
+  width:32px !important; height:15px !important; margin:7px auto 0 !important;
+  border:0 !important; border-bottom:3px solid #54dfff !important;
+  border-radius:0 0 22px 22px !important; background:transparent !important;
+  box-shadow:0 4px 10px rgba(36,210,255,.55);
+}
+@media(max-width:800px) {
+  .sketch-hero--admin-art .sketch-welcome-copy {top:9%;left:5%;width:48%;transform:none}
+  .sketch-welcome-copy h1 {font-size:clamp(24px,4vw,34px)}
+}
+@media(max-width:560px) {
+  .sketch-hero--admin-art .sketch-welcome-copy {top:24px;left:18px;width:calc(100% - 36px);text-align:center}
+  .sketch-welcome-copy h1 {font-size:27px}
+}

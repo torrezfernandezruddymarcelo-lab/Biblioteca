@@ -66,7 +66,8 @@ function AdminRequestPage() {
   };
 
   return (
-    <main className="sketch-page">\n      <GlobalNavigation />
+    <main className="sketch-page">
+      <GlobalNavigation />
       <header className="sketch-header">
         <Link to="/" className="sketch-logo">
           <span>B</span>

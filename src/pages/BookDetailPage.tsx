@@ -81,7 +81,6 @@ function BookDetailPage() {
             <p>{book.description}</p>
 
             <p><strong>Año:</strong> {book.year}</p>
-            <p><strong>Estado:</strong> {book.status}</p>
             <p><strong>Solicitante:</strong> {user.name}</p>
 
             {book.pdfUrl && (
@@ -95,11 +94,8 @@ function BookDetailPage() {
                 className="sketch-button"
                 type="button"
                 onClick={handleRequest}
-                disabled={book.status !== "Disponible"}
               >
-                {book.status === "Disponible"
-                  ? "Solicitar préstamo"
-                  : "Libro no disponible"}
+                Solicitar libro
               </button>
             )}
 

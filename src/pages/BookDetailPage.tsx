@@ -20,7 +20,8 @@ function BookDetailPage() {
 
   if (!book) {
     return (
-      <main className="sketch-page">\n      <GlobalNavigation />
+      <main className="sketch-page">
+      <GlobalNavigation />
         <section className="sketch-catalog">
           <h1>Libro no encontrado</h1>
           <Link to="/books">Volver al catálogo</Link>

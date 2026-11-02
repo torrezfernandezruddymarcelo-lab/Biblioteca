@@ -4,30 +4,26 @@ import type { Book } from "../types/book";
 
 const BOOKS_KEY = "biblioteca_books";
 
+// IDs de las obras que venían precargadas en el catálogo.
+const PRELOADED_BOOK_IDS = new Set([
+  "book-1",
+  "book-2",
+  "book-3",
+  "book-4",
+  "book-5",
+  "obra-clasicas-de-siempre",
+]);
+
 const getBooks = (): Book[] => {
   const storedBooks = storageService.get<Book[]>(BOOKS_KEY);
   const defaults = initialBooks as Book[];
 
-  if (!storedBooks) return defaults;
+  // Conserva únicamente los libros agregados desde el panel de administración.
+  const userBooks = (storedBooks ?? []).filter(
+    (book) => !PRELOADED_BOOK_IDS.has(book.id)
+  );
 
-  // Mantiene los libros guardados y agrega los nuevos del catálogo inicial
-  // que todavía no existen en el almacenamiento local del navegador.
-  const mergedBooks = [...storedBooks];
-  defaults.forEach((defaultBook) => {
-    const existingIndex = mergedBooks.findIndex((book) => book.id === defaultBook.id);
-
-    if (existingIndex === -1) {
-      mergedBooks.push(defaultBook);
-    } else {
-      mergedBooks[existingIndex] = {
-        ...defaultBook,
-        ...mergedBooks[existingIndex],
-        pdfUrl: mergedBooks[existingIndex].pdfUrl || defaultBook.pdfUrl,
-      };
-    }
-  });
-
-  return mergedBooks.map(({ status: _status, ...book }) => book as Book);
+  return userBooks.map(({ status: _status, ...book }) => book as Book);
 };
 
 const saveBooks = (books: Book[]) => {

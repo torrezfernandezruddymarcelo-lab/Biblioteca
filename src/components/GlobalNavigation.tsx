@@ -24,7 +24,7 @@ function GlobalNavigation() {
     <>
       <aside className="library-sidebar">
         <Link to="/" className="library-sidebar-brand">
-          <span className="library-brand-book">📖</span>
+          <span className="library-brand-book" aria-hidden="true"><i>✦</i><b>📖</b><i>✧</i></span>
           <strong>Biblioteca<br /><em>Galáctica</em></strong>
           <small>UN UNIVERSO POR LEER</small>
         </Link>

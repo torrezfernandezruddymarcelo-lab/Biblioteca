@@ -3707,3 +3707,75 @@ input,select,textarea {
 @media (max-width: 380px) {
   .sketch-book-grid { grid-template-columns: 1fr; }
 }
+
+
+/* HERO ADMINISTRADOR: ilustracion espacial a todo el ancho */
+.sketch-hero--admin-art {
+  position: relative;
+  display: block;
+  min-height: clamp(500px, 62vw, 760px);
+  overflow: hidden;
+  isolation: isolate;
+  padding: 0;
+  background:
+    radial-gradient(ellipse at 50% 70%, rgba(0,174,255,.32), transparent 48%),
+    radial-gradient(ellipse at 78% 20%, rgba(119,73,255,.35), transparent 38%),
+    linear-gradient(135deg,#020a20 0%,#08265b 52%,#160d46 100%);
+}
+.sketch-hero--admin-art .sketch-space-scene {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  border: 0;
+  background:
+    linear-gradient(180deg,rgba(3,12,35,.08),rgba(3,12,35,.12)),
+    url("https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=1800&q=90") center / cover;
+}
+.sketch-hero--admin-art .sketch-hero-robot {
+  width: clamp(310px, 39vw, 510px);
+  left: 50%;
+  bottom: 2%;
+  transform: translateX(-50%);
+  z-index: 3;
+}
+.sketch-hero--admin-art .sketch-planet-large {
+  width: clamp(240px, 30vw, 390px);
+  height: clamp(240px, 30vw, 390px);
+  right: 8%;
+  top: 5%;
+}
+.sketch-hero--admin-art .sketch-platform {
+  left: 50%;
+  width: min(82%, 1100px);
+  bottom: 4%;
+  transform: translateX(-50%);
+}
+.sketch-hero--admin-art .sketch-planet-small {
+  left: 12%;
+  top: 16%;
+  width: 95px;
+  height: 95px;
+}
+@media (max-width: 850px) {
+  .sketch-hero--admin-art { min-height: 620px; }
+  .sketch-hero--admin-art .sketch-space-scene { height: 100%; }
+  .sketch-hero--admin-art .sketch-hero-robot {
+    width: min(78vw, 410px);
+    left: 50%;
+    bottom: 3%;
+  }
+  .sketch-hero--admin-art .sketch-planet-large {
+    width: 230px;
+    height: 230px;
+    right: 2%;
+    top: 7%;
+  }
+  .sketch-hero--admin-art .sketch-platform { width: 96%; }
+}
+@media (max-width: 620px) {
+  .sketch-hero--admin-art { min-height: 540px; border-radius: 20px; }
+  .sketch-hero--admin-art .sketch-hero-robot { width: min(88vw, 350px); }
+  .sketch-hero--admin-art .sketch-planet-large { width: 175px; height: 175px; right: -5%; }
+}

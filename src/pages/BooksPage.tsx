@@ -80,36 +80,33 @@ function BooksPage() {
         </button>
       </header>
 
-      <section className="sketch-hero">
-        <div className="sketch-hero-copy">
-          <span className="sketch-kicker">BIBLIOTECA GALÁCTICA</span>
-
-          <h1>Explora un universo lleno de libros</h1>
-
-          <p>
-            Cada libro es una nueva aventura. Encuentra tu próxima
-            historia favorita y descubre nuevos conocimientos.
-          </p>
-
-          <a className="sketch-button" href="#catalogo">
-            Explorar catálogo
-          </a>
-        </div>
-
-        <div className="sketch-space-scene" aria-hidden="true">
-          <div className="sketch-planet-large" />
-          <div className="sketch-planet-small" />
-
-          <div className="sketch-star">✦</div>
-          <div className="sketch-star sketch-star-two">✧</div>
-
-          <div className="sketch-platform" />
-
-          <div className="sketch-hero-robot">
-            <div className="robot-eye robot-eye-left" />
-            <div className="robot-eye robot-eye-right" />
-            <div className="robot-mouth" />
+      <section className="sketch-hero sketch-hero--catalog-art">
+        <div className="catalog-robot-scene" aria-hidden="true">
+          <div className="catalog-planet catalog-planet-left" />
+          <div className="catalog-galaxy" />
+          <div className="catalog-planet catalog-planet-right" />
+          <div className="catalog-books-stack"><i /><i /><i /></div>
+          <div className="catalog-reading-robot">
+            <div className="catalog-robot-head">
+              <span className="catalog-robot-eye" />
+              <span className="catalog-robot-eye" />
+              <span className="catalog-robot-smile" />
+            </div>
+            <div className="catalog-robot-body" />
+            <div className="catalog-robot-arm catalog-robot-arm-left" />
+            <div className="catalog-robot-arm catalog-robot-arm-right" />
+            <div className="catalog-open-book"><span /><span /></div>
+            <div className="catalog-robot-leg catalog-robot-leg-left" />
+            <div className="catalog-robot-leg catalog-robot-leg-right" />
           </div>
+          <span className="catalog-spark catalog-spark-one">✦</span>
+          <span className="catalog-spark catalog-spark-two">✧</span>
+        </div>
+        <div className="catalog-hero-copy">
+          <span className="sketch-kicker">BIBLIOTECA GALÁCTICA</span>
+          <h1>Explora un universo lleno de libros</h1>
+          <p>Cada libro es una nueva aventura. Encuentra tu próxima historia favorita y descubre nuevos conocimientos.</p>
+          <a className="sketch-button" href="#catalogo">Explorar catálogo</a>
         </div>
       </section>
 

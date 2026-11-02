@@ -65,6 +65,12 @@ function HomePage() {
       </header>
 
       <section className="sketch-hero sketch-hero--admin-art">
+        <div className="sketch-welcome-copy">
+          <span className="sketch-kicker">✦ UN UNIVERSO DE HISTORIAS ✦</span>
+          <h1>¡Bienvenido a <span>Biblioteca Galáctica</span>, {user.name}!</h1>
+          <p>Tu próxima aventura está a solo una página de distancia. Explora nuevos mundos, descubre conocimientos y deja que cada libro te lleve más lejos.</p>
+          <Link className="sketch-button" to="/books">Explorar la biblioteca <span>→</span></Link>
+        </div>
         {false && <div className="sketch-hero-copy">
           <span className="sketch-kicker">
             BIENVENIDO A TU BIBLIOTECA
@@ -99,7 +105,11 @@ function HomePage() {
               <div className="robot-mouth" />
             </div>
             <div className="robot-neck" />
-            <div className="robot-body">
+            <div className="robot-body"><div className="robot-chest-light" /></div>
+            <div className="robot-reading-book" aria-hidden="true">
+              <span className="robot-book-page robot-book-page-left" />
+              <span className="robot-book-page robot-book-page-right" />
+              <span className="robot-book-glow">✦</span>
             </div>
             <div className="robot-arm robot-arm-left" />
             <div className="robot-arm robot-arm-right" />

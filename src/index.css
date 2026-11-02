@@ -4575,3 +4575,27 @@ body {
   background: transparent !important;
   box-shadow: none !important;
 }
+
+
+/* ELIMINAR DEFINITIVAMENTE EL MARCO QUE ENCIERRA EL DIBUJO */
+.sketch-hero.sketch-hero--admin-art {
+  border: none !important;
+  border-radius: 0 !important;
+  outline: none !important;
+  box-shadow: none !important;
+  background: transparent !important;
+  overflow: visible !important;
+}
+.sketch-hero--admin-art::before,
+.sketch-hero--admin-art::after {
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+}
+.sketch-hero--admin-art .sketch-space-scene {
+  background: transparent !important;
+  border: 0 !important;
+  outline: 0 !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}

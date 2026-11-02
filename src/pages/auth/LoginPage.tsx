@@ -29,7 +29,7 @@ function LoginPage() {
   return (
     <main className="login-page">
       <section className="login-hero">
-        <div className="bot-decoration">🤖</div>
+        <img className="login-hero__image" src="/images/portada-galactica.png" alt="Robot explorador junto a una biblioteca espacial" />
         <div className="login-hero__badge">🚀 ACCESO A LA GALAXIA</div>
         <h1>¡Bienvenido, explorador!</h1>
         <p>

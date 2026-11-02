@@ -3196,3 +3196,64 @@ input,select,textarea {
   }
   .sketch-space-scene { background-position:center; }
 }
+
+
+/* ESCENA PRINCIPAL: robot y planeta protagonistas */
+.sketch-hero {
+  min-height: 560px;
+}
+.sketch-hero-copy {
+  width: 43%;
+  max-width: 570px;
+  padding: 42px;
+}
+.sketch-space-scene {
+  width: 61%;
+  height: 100%;
+  right: 0;
+  border-left: 0;
+  background:
+    radial-gradient(ellipse at 58% 58%, rgba(35,190,255,.24), transparent 58%),
+    url("https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=1600&q=90") center / cover;
+}
+.sketch-hero-robot {
+  width: clamp(300px, 34vw, 440px);
+  left: 12%;
+  bottom: 1%;
+  transform-origin: bottom center;
+  filter: drop-shadow(0 22px 28px rgba(0,0,0,.52)) drop-shadow(0 0 25px rgba(71,207,255,.45));
+}
+.sketch-planet-large {
+  width: clamp(230px, 25vw, 330px);
+  height: clamp(230px, 25vw, 330px);
+  right: 2%;
+  top: 4%;
+  box-shadow: inset -38px -30px 58px rgba(0,0,0,.5), 0 0 75px rgba(0,176,255,.62);
+}
+.sketch-platform {
+  left: 4%;
+  width: 88%;
+  height: 38px;
+  bottom: 4%;
+}
+.sketch-planet-small {
+  left: 5%;
+  top: 10%;
+  width: 82px;
+  height: 82px;
+}
+@media (max-width: 850px) {
+  .sketch-hero { min-height: 650px; align-items: flex-start; }
+  .sketch-hero-copy { width: 100%; max-width: none; padding: 34px 30px; }
+  .sketch-space-scene { width: 100%; height: 62%; top: auto; bottom: 0; }
+  .sketch-hero-robot { width: clamp(270px, 58vw, 390px); left: 8%; bottom: 0; }
+  .sketch-planet-large { width: clamp(190px, 34vw, 270px); height: clamp(190px, 34vw, 270px); right: 4%; top: 2%; }
+}
+@media (max-width: 600px) {
+  .sketch-hero { min-height: 700px; }
+  .sketch-hero-copy { padding: 28px 22px; }
+  .sketch-space-scene { height: 56%; }
+  .sketch-hero-robot { width: min(76vw, 330px); left: 0; bottom: 1%; }
+  .sketch-planet-large { width: 190px; height: 190px; right: -4%; top: 5%; }
+  .sketch-platform { width: 100%; left: 0; }
+}

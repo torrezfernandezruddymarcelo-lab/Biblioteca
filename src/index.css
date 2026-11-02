@@ -3398,3 +3398,23 @@ input,select,textarea {
   .login-hero h1 { font-size: 34px; }
   .login-card { padding: 24px 19px; border-radius: 24px; }
 }
+
+
+/* Formulario de acceso: cristal translúcido para dejar ver la portada */
+.login-page .login-card {
+  background: linear-gradient(
+    145deg,
+    rgba(17, 61, 108, 0.56),
+    rgba(3, 22, 54, 0.62)
+  );
+  border: 1px solid rgba(190, 235, 255, 0.48);
+  box-shadow:
+    0 22px 65px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.22);
+  -webkit-backdrop-filter: blur(9px) saturate(125%);
+  backdrop-filter: blur(9px) saturate(125%);
+}
+.login-page .login-card input {
+  background: rgba(4, 24, 54, 0.48);
+  border-color: rgba(180, 225, 255, 0.42);
+}

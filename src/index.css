@@ -4200,3 +4200,23 @@ input,select,textarea {
   }
   .sketch-hero--admin-art .sketch-platform { width: 90%; }
 }
+
+
+/* AJUSTE FINAL: quitar el óvalo del pecho y reducir el recuadro */
+.sketch-hero--admin-art {
+  width: min(calc(100% - 32px), 1040px);
+  min-height: 520px;
+  margin: 18px auto 28px;
+}
+.sketch-hero--admin-art .robot-chest-light {
+  display: none;
+}
+@media (max-width: 850px) {
+  .sketch-hero--admin-art { min-height: 500px; }
+}
+@media (max-width: 620px) {
+  .sketch-hero--admin-art {
+    width: calc(100% - 24px);
+    min-height: 470px;
+  }
+}

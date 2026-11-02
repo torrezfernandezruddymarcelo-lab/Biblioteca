@@ -98,7 +98,6 @@ function HomePage() {
             </div>
             <div className="robot-neck" />
             <div className="robot-body">
-              <div className="robot-chest-light" />
             </div>
             <div className="robot-arm robot-arm-left" />
             <div className="robot-arm robot-arm-right" />

@@ -1,3 +1,4 @@
+import GlobalNavigation from "../components/GlobalNavigation";
 
 import { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
@@ -66,7 +67,7 @@ function AdminRoleRequestsPage() {
   );
 
   return (
-    <main className="admin-page">
+    <main className="admin-page">\n      <GlobalNavigation />
       <header className="admin-header">
         <div>
           <h1>Solicitudes de administradores</h1>

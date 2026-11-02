@@ -13,10 +13,6 @@ function HomePage() {
   if (!user) return <Navigate to="/login" replace />;
 
   const books = bookRepository.getAll();
-  const available = books.filter(
-    (book) => book.status === "Disponible"
-  ).length;
-
   const requests = bookRequestRepository.getByUser(user.id);
 
   const isAdmin = authRepository.isAdmin();
@@ -120,8 +116,8 @@ function HomePage() {
         </article>
 
         <article>
-          <span>Libros disponibles</span>
-          <strong>{available}</strong>
+          <span>Categorías</span>
+          <strong>{new Set(books.map((book) => book.category)).size}</strong>
         </article>
 
         <article>
@@ -169,7 +165,6 @@ function HomePage() {
               <div className="sketch-book-info">
                 <h3>{book.title}</h3>
                 <p>{book.author}</p>
-                <strong>{book.status}</strong>
 
                 <Link to={`/books/${book.id}`}>
                   Ver libro →

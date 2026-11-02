@@ -43,5 +43,14 @@
     "year": 1605,
     "description": "La gran obra de la narrativa española sobre aventuras, ideales y locura.",
     "pdfUrl": "https://www.cervantesvirtual.com/obra-visor-din/el-ingenioso-hidalgo-don-quijote-de-la-mancha--1/html/"
+  },
+  {
+    "id": "obra-clasicas-de-siempre",
+    "title": "Obras clásicas de siempre",
+    "author": "Colección de obras clásicas",
+    "category": "Clásicos",
+    "year": 2026,
+    "description": "Colección de obras clásicas para consultar en línea.",
+    "pdfUrl": "https://drive.google.com/file/d/1iHn4ZwwZ7adCZ-5vnWvjA1p0TxzRE6rf/view?plis=1"
   }
 ]

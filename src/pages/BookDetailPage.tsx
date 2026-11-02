@@ -65,11 +65,10 @@ function BookDetailPage() {
             <p>{book.description}</p>
 
             <p><strong>Año:</strong> {book.year}</p>
-            <p><strong>Solicitante:</strong> {user.name}</p>
 
             {book.pdfUrl && (
               <a href={book.pdfUrl} target="_blank" rel="noreferrer">
-                Leer PDF
+                Ver libro en línea
               </a>
             )}
 

@@ -67,7 +67,7 @@ function BookDetailPage() {
             <p><strong>Año:</strong> {book.year}</p>
 
             {book.pdfUrl && (
-              <a href={book.pdfUrl} target="_blank" rel="noreferrer">
+              <a className="sketch-button" href={book.pdfUrl} target="_blank" rel="noreferrer">
                 Ver libro en línea
               </a>
             )}

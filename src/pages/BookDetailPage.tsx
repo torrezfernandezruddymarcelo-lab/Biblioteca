@@ -1,10 +1,8 @@
 import GlobalNavigation from "../components/GlobalNavigation";
-import { useState } from "react";
 import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 
 import { authRepository } from "../repositories/authRepository";
 import { bookRepository } from "../repositories/bookRepository";
-import { bookRequestRepository } from "../repositories/bookRequestRepository";
 
 function BookDetailPage() {
   const navigate = useNavigate();
@@ -12,9 +10,6 @@ function BookDetailPage() {
 
   const user = authRepository.getCurrentUser();
   const book = bookId ? bookRepository.getById(bookId) : null;
-
-  const [message, setMessage] = useState("");
-  const [success, setSuccess] = useState(false);
 
   if (!user) return <Navigate to="/login" replace />;
 
@@ -29,17 +24,6 @@ function BookDetailPage() {
       </main>
     );
   }
-
-  const handleRequest = () => {
-    const result = bookRequestRepository.create(book.id, {
-      id: user.id,
-      name: user.name,
-      carnet: user.carnet,
-    });
-
-    setSuccess(result.success);
-    setMessage(result.message);
-  };
 
   const handleLogout = () => {
     authRepository.logout();
@@ -89,25 +73,6 @@ function BookDetailPage() {
               </a>
             )}
 
-            {user.role === "USUARIO" && (
-              <button
-                className="sketch-button"
-                type="button"
-                onClick={handleRequest}
-              >
-                Solicitar libro
-              </button>
-            )}
-
-            {message && (
-              <p
-                role="status"
-                aria-live="polite"
-                className={success ? "request-success" : "request-error"}
-              >
-                {message}
-              </p>
-            )}
           </article>
         </div>
       </section>

@@ -101,11 +101,11 @@ function AdminBookCreatePage() {
           </label>
 
           <label>
-            Ruta del PDF (opcional)
+            Enlace para leer el libro (opcional)
             <input
               value={pdfUrl}
               onChange={(e) => setPdfUrl(e.target.value)}
-              placeholder="/libros/mi-libro.pdf"
+              placeholder="https://... o /libros/mi-libro.pdf"
             />
           </label>
 

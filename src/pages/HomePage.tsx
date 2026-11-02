@@ -28,7 +28,8 @@ function HomePage() {
   };
 
   return (
-    <main className="sketch-page">\n      <GlobalNavigation />
+    <main className="sketch-page">
+      <GlobalNavigation />
       <header className="sketch-header">
         <Link className="sketch-logo" to="/">
           <span>B</span> Biblioteca Galáctica

@@ -4631,3 +4631,38 @@ body {
     drop-shadow(0 0 34px rgba(55,210,255,.58))
     drop-shadow(0 0 72px rgba(101,91,255,.34));
 }
+
+
+/* HERO DEL CATÁLOGO: robot lector con composición galáctica */
+.sketch-hero--catalog-art{position:relative;display:grid;grid-template-columns:1fr 1fr;align-items:center;width:min(100%,1450px);min-height:510px;margin:10px auto 34px;padding:24px 3%;overflow:hidden;isolation:isolate;border:0;border-radius:0;background:transparent}
+.sketch-hero--catalog-art:before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(ellipse at 24% 58%,rgba(0,123,255,.18),transparent 38%),radial-gradient(ellipse at 75% 20%,rgba(131,58,255,.20),transparent 40%)}
+.catalog-robot-scene{position:relative;min-height:450px;height:100%;display:flex;align-items:center;justify-content:center}
+.catalog-planet{position:absolute;border-radius:50%;filter:drop-shadow(0 0 25px rgba(42,164,255,.5))}
+.catalog-planet-left{width:150px;height:150px;left:4%;top:5%;background:radial-gradient(circle at 32% 28%,#8beaff,#1769cf 48%,#071a62 78%)}
+.catalog-planet-right{width:88px;height:88px;right:5%;bottom:12%;background:radial-gradient(circle at 30% 25%,#b5f7ff,#3156d9 55%,#11144d)}
+.catalog-galaxy{position:absolute;width:230px;height:105px;right:5%;top:12%;border-radius:50%;transform:rotate(-25deg);background:radial-gradient(ellipse,#fff6c7 0 3%,#ff9df2 12%,#6c5dff 35%,transparent 70%);filter:blur(5px);box-shadow:0 0 45px #705cff}
+.catalog-books-stack{position:absolute;bottom:10%;left:10%;width:75%;height:90px}
+.catalog-books-stack i{position:absolute;left:0;width:100%;height:25px;border:2px solid #9bdfff;border-radius:7px;background:linear-gradient(90deg,#10245f,#3156a6 55%,#111c50);box-shadow:0 5px 13px #020822}
+.catalog-books-stack i:nth-child(1){bottom:0}.catalog-books-stack i:nth-child(2){bottom:25px;left:5%;width:88%}.catalog-books-stack i:nth-child(3){bottom:50px;left:10%;width:78%}
+.catalog-reading-robot{position:relative;z-index:2;width:260px;height:345px;margin-top:35px;filter:drop-shadow(0 16px 22px rgba(0,0,0,.5)) drop-shadow(0 0 28px rgba(45,194,255,.48));animation:floatRobot 4s ease-in-out infinite}
+.catalog-robot-head{position:absolute;z-index:4;top:0;left:50%;transform:translateX(-50%);width:190px;height:150px;border:7px solid #effaff;border-radius:42% 42% 35% 35%;background:linear-gradient(135deg,#fff,#b8e5ff 55%,#4e83bb);box-shadow:inset 0 -12px 20px #315b8b,0 0 25px #32caff}
+.catalog-robot-head:before{content:"";position:absolute;inset:23px 19px 25px;border-radius:28px;background:linear-gradient(145deg,#06122e,#101b4b)}
+.catalog-robot-eye{position:absolute;z-index:2;top:58px;width:23px;height:29px;border-radius:50%;background:#5cf0ff;box-shadow:0 0 12px #42eaff,0 0 23px #42eaff}
+.catalog-robot-eye:first-child{left:48px}.catalog-robot-eye:nth-child(2){right:48px}
+.catalog-robot-smile{position:absolute;z-index:2;left:83px;top:96px;width:25px;height:11px;border-bottom:3px solid #71edff;border-radius:50%}
+.catalog-robot-body{position:absolute;top:137px;left:70px;width:120px;height:130px;border:6px solid #eaf8ff;border-radius:30px 30px 24px 24px;background:linear-gradient(135deg,#f8ffff,#9bc9ef 65%,#4777ae);box-shadow:inset -9px -8px 15px #315b8b}
+.catalog-robot-arm{position:absolute;z-index:5;top:175px;width:42px;height:105px;border:5px solid #f0fbff;border-radius:24px;background:linear-gradient(120deg,#fff,#80b8e6);transform-origin:top center}
+.catalog-robot-arm-left{left:48px;transform:rotate(-28deg)}.catalog-robot-arm-right{right:48px;transform:rotate(28deg)}
+.catalog-open-book{position:absolute;z-index:6;top:205px;left:50%;display:flex;width:190px;height:72px;transform:translateX(-50%) rotate(-5deg);filter:drop-shadow(0 0 12px #36cfff)}
+.catalog-open-book span{width:50%;height:100%;border:2px solid #e8fbff;background:linear-gradient(145deg,#fffbdc,#9bc9ec)}
+.catalog-open-book span:first-child{border-radius:9px 2px 3px 12px;transform:skewY(8deg)}.catalog-open-book span:last-child{border-radius:2px 9px 12px 3px;transform:skewY(-8deg)}
+.catalog-robot-leg{position:absolute;top:255px;width:48px;height:75px;border:5px solid #effaff;border-radius:22px;background:linear-gradient(120deg,#fff,#83b7e4)}
+.catalog-robot-leg-left{left:82px;transform:rotate(12deg)}.catalog-robot-leg-right{right:82px;transform:rotate(-12deg)}
+.catalog-spark{position:absolute;color:#fff5a8;text-shadow:0 0 15px #53dfff;font-size:35px}.catalog-spark-one{top:25%;right:18%}.catalog-spark-two{bottom:27%;left:7%}
+.catalog-hero-copy{position:relative;z-index:3;max-width:560px;padding:20px 3%}
+.catalog-hero-copy .sketch-kicker{color:#8cecff;font-size:12px;font-weight:900;letter-spacing:2px}
+.catalog-hero-copy h1{font-size:clamp(34px,4.3vw,62px);line-height:1.08;margin:18px 0;color:#fff;text-shadow:0 3px 28px rgba(46,172,255,.55)}
+.catalog-hero-copy p{max-width:500px;color:#d0e5ff;font-size:17px;line-height:1.8}
+.catalog-hero-copy .sketch-button{display:inline-flex;margin-top:16px;padding:14px 24px;border-radius:30px;background:linear-gradient(110deg,#078bdc,#6651ef);box-shadow:0 0 24px rgba(42,176,255,.35)}
+@media(max-width:800px){.sketch-hero--catalog-art{grid-template-columns:1fr;min-height:auto}.catalog-robot-scene{min-height:390px;order:2}.catalog-hero-copy{text-align:center;order:1;margin:auto}.catalog-hero-copy p{margin-left:auto;margin-right:auto}}
+@media(max-width:520px){.catalog-robot-scene{min-height:330px;transform:scale(.88);margin:-15px 0}.catalog-hero-copy h1{font-size:34px}.catalog-hero-copy p{font-size:14px}}

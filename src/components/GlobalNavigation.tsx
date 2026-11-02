@@ -34,7 +34,6 @@ function GlobalNavigation() {
           <Link className={location.pathname === "/" ? "active" : ""} to="/">⌂ <span>Inicio</span></Link>
           <Link className={location.pathname.startsWith("/books") ? "active" : ""} to="/books">▤ <span>Catálogo</span></Link>
           {isAdmin && <Link className={location.pathname === "/admin/libros/nuevo" ? "active" : ""} to="/admin/libros/nuevo">＋ <span>Agregar libros</span></Link>}
-          {isAdmin && <Link className={location.pathname === "/admin/solicitudes-libros" ? "active" : ""} to="/admin/solicitudes-libros">▣ <span>Solicitudes</span></Link>}
           {isPrincipalAdmin && <Link className={location.pathname === "/admin/solicitudes-administrador" ? "active" : ""} to="/admin/solicitudes-administrador">♙ <span>Administradores</span></Link>}
         </nav>
         <div className="library-sidebar-bottom">✦ <span>Explora. Aprende. Imagina.</span></div>

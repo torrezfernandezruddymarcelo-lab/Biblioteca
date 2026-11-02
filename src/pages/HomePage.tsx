@@ -91,9 +91,21 @@ function HomePage() {
           <div className="sketch-platform" />
 
           <div className="sketch-hero-robot">
-            <div className="robot-eye robot-eye-left" />
-            <div className="robot-eye robot-eye-right" />
-            <div className="robot-mouth" />
+            <div className="robot-head">
+              <div className="robot-eye robot-eye-left" />
+              <div className="robot-eye robot-eye-right" />
+              <div className="robot-mouth" />
+            </div>
+            <div className="robot-neck" />
+            <div className="robot-body">
+              <div className="robot-chest-light" />
+            </div>
+            <div className="robot-arm robot-arm-left" />
+            <div className="robot-arm robot-arm-right" />
+            <div className="robot-leg robot-leg-left" />
+            <div className="robot-leg robot-leg-right" />
+            <div className="robot-foot robot-foot-left" />
+            <div className="robot-foot robot-foot-right" />
           </div>
         </div>
       </section>

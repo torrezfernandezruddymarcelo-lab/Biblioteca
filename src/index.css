@@ -4599,3 +4599,35 @@ body {
   box-shadow: none !important;
   border-radius: 0 !important;
 }
+
+
+/* EXTENDER EL RESPLANDOR GALÁCTICO A TODO EL LIENZO */
+body {
+  background:
+    radial-gradient(ellipse at 76% 42%, rgba(0, 198, 255, .19), transparent 48%),
+    radial-gradient(ellipse at 22% 30%, rgba(72, 87, 255, .18), transparent 45%),
+    radial-gradient(ellipse at 52% 92%, rgba(174, 74, 255, .14), transparent 48%),
+    linear-gradient(135deg, #030925 0%, #091244 48%, #190c42 100%) !important;
+  background-attachment: fixed !important;
+}
+.sketch-hero--admin-art {
+  overflow: visible !important;
+  isolation: auto !important;
+  background: transparent !important;
+}
+.sketch-hero--admin-art::before,
+.sketch-hero--admin-art::after {
+  content: none !important;
+  display: none !important;
+}
+.sketch-hero--admin-art .sketch-space-scene {
+  overflow: visible !important;
+  background: transparent !important;
+  filter: none !important;
+}
+.sketch-hero--admin-art .sketch-hero-robot {
+  filter:
+    drop-shadow(0 18px 22px rgba(0,0,0,.48))
+    drop-shadow(0 0 34px rgba(55,210,255,.58))
+    drop-shadow(0 0 72px rgba(101,91,255,.34));
+}

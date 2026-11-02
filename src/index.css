@@ -4556,3 +4556,22 @@ input,select,textarea {
   outline: 0 !important;
   box-shadow: none !important;
 }
+
+
+/* UN SOLO CIELO GALÁCTICO CONTINUO EN TODA LA PÁGINA */
+html, body, #root {
+  min-height: 100%;
+  background-color: #030925;
+}
+body {
+  background:
+    radial-gradient(ellipse at 50% 105%, rgba(0, 205, 255, .23), transparent 42%),
+    radial-gradient(circle at 18% 22%, rgba(72, 87, 255, .20), transparent 30%),
+    radial-gradient(circle at 82% 18%, rgba(174, 74, 255, .24), transparent 34%),
+    linear-gradient(135deg, #030925 0%, #091244 48%, #190c42 100%) !important;
+  background-attachment: fixed !important;
+}
+.sketch-hero--admin-art {
+  background: transparent !important;
+  box-shadow: none !important;
+}

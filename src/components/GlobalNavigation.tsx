@@ -7,7 +7,7 @@ function GlobalNavigation() {
   const navigate = useNavigate();
   const location = useLocation();
   const [search, setSearch] = useState("");
-  const isAdmin = authRepository.isAdmin();
+  const canManageBooks = authRepository.canManageBooks();
   const isPrincipalAdmin = authRepository.isPrincipalAdmin();
 
   const logout = () => {
@@ -33,7 +33,7 @@ function GlobalNavigation() {
         <nav className="library-side-links">
           <Link className={location.pathname === "/" ? "active" : ""} to="/">⌂ <span>Inicio</span></Link>
           <Link className={location.pathname.startsWith("/books") ? "active" : ""} to="/books">▤ <span>Catálogo</span></Link>
-          {isAdmin && <Link className={location.pathname === "/admin/libros/nuevo" ? "active" : ""} to="/admin/libros/nuevo">＋ <span>Agregar libros</span></Link>}
+          {canManageBooks && <Link className={location.pathname === "/admin/libros/nuevo" ? "active" : ""} to="/admin/libros/nuevo">＋ <span>Agregar libros</span></Link>}
           {isPrincipalAdmin && <Link className={location.pathname === "/admin/solicitudes-administrador" ? "active" : ""} to="/admin/solicitudes-administrador">♙ <span>Administradores</span></Link>}
         </nav>
         <div className="library-sidebar-bottom">✦ <span>Explora. Aprende. Imagina.</span></div>

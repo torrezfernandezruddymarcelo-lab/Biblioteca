@@ -11,9 +11,13 @@ const normalizeBook = (book: Partial<Book> & Pick<Book, "id" | "title" | "author
 
 const getBooks = (): Book[] => {
   const storedBooks = storageService.get<Book[]>(BOOKS_KEY) ?? [];
-  const defaults = (initialBooks as Book[]).map(normalizeBook);
+  const storedById = new Map(storedBooks.map((book) => [book.id, normalizeBook(book)]));
+  const defaults = (initialBooks as Book[]).map((book) =>
+    storedById.get(book.id) ?? normalizeBook(book)
+  );
+  const defaultIds = new Set(defaults.map((book) => book.id));
   const customBooks = storedBooks
-    .filter((book) => !defaults.some((defaultBook) => defaultBook.id === book.id))
+    .filter((book) => !defaultIds.has(book.id))
     .map(normalizeBook);
 
   return [...defaults, ...customBooks];
@@ -35,7 +39,6 @@ export const bookRepository = {
   search(term: string): Book[] {
     const normalized = term.trim().toLowerCase();
     const books = getBooks();
-
     if (!normalized) return books;
 
     return books.filter((book) =>
@@ -53,16 +56,13 @@ export const bookRepository = {
       id: crypto.randomUUID(),
       status: bookData.status ?? "Disponible",
     };
-
     saveBooks([...books, newBook]);
     return newBook;
   },
 
   updateStatus(id: string, status: BookStatus): boolean {
     const books = getBooks();
-    const exists = books.some((book) => book.id === id);
-    if (!exists) return false;
-
+    if (!books.some((book) => book.id === id)) return false;
     saveBooks(books.map((book) => book.id === id ? { ...book, status } : book));
     return true;
   },
@@ -70,9 +70,7 @@ export const bookRepository = {
   deleteById(id: string): boolean {
     const books = getBooks();
     const updated = books.filter((book) => book.id !== id);
-
     if (updated.length === books.length) return false;
-
     saveBooks(updated);
     return true;
   },

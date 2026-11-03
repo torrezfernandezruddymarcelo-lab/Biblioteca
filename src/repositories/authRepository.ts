@@ -150,6 +150,11 @@ export const authRepository = {
     return user?.role === "ADMIN" || user?.role === "ADMIN_PRINCIPAL";
   },
 
+  canManageBooks(): boolean {
+    const user = this.getCurrentUser();
+    return user?.role === "DOCENTE" || user?.role === "ADMIN" || user?.role === "ADMIN_PRINCIPAL";
+  },
+
   isPrincipalAdmin(): boolean {
     const user = this.getCurrentUser();
     return user !== null && user.id === PRINCIPAL_ADMIN_ID && user.role === "ADMIN_PRINCIPAL";

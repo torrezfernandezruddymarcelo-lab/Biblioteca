@@ -1,12 +1,15 @@
 import GlobalNavigation from "../components/GlobalNavigation";
+import { useState } from "react";
 import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 
 import { authRepository } from "../repositories/authRepository";
 import { bookRepository } from "../repositories/bookRepository";
+import { bookRequestRepository } from "../repositories/bookRequestRepository";
 
 function BookDetailPage() {
   const navigate = useNavigate();
   const { bookId } = useParams();
+  const [message, setMessage] = useState("");
 
   const user = authRepository.getCurrentUser();
   const book = bookId ? bookRepository.getById(bookId) : null;
@@ -16,7 +19,7 @@ function BookDetailPage() {
   if (!book) {
     return (
       <main className="sketch-page">
-      <GlobalNavigation />
+        <GlobalNavigation />
         <section className="sketch-catalog">
           <h1>Libro no encontrado</h1>
           <Link to="/books">Volver al catálogo</Link>
@@ -30,8 +33,14 @@ function BookDetailPage() {
     navigate("/login", { replace: true });
   };
 
+  const handleRequest = () => {
+    const result = bookRequestRepository.create(book.id, user);
+    setMessage(result.message);
+  };
+
   return (
     <main className="sketch-page">
+      <GlobalNavigation />
       <header className="sketch-header">
         <Link className="sketch-logo" to="/">
           <span>B</span> Biblioteca Galáctica
@@ -42,7 +51,7 @@ function BookDetailPage() {
           <Link to="/books">Catálogo</Link>
         </nav>
 
-        <button className="sketch-profile" onClick={handleLogout}>
+        <button className="sketch-profile" type="button" onClick={handleLogout}>
           Cerrar sesión
         </button>
       </header>
@@ -63,8 +72,8 @@ function BookDetailPage() {
             <h1>{book.title}</h1>
             <h3>{book.author}</h3>
             <p>{book.description}</p>
-
             <p><strong>Año:</strong> {book.year}</p>
+            <p><strong>Disponibilidad:</strong> {book.status}</p>
 
             {book.pdfUrl && (
               <a className="sketch-button" href={book.pdfUrl} target="_blank" rel="noreferrer">
@@ -72,6 +81,16 @@ function BookDetailPage() {
               </a>
             )}
 
+            <button
+              className="sketch-button"
+              type="button"
+              onClick={handleRequest}
+              disabled={book.status !== "Disponible"}
+            >
+              {book.status === "Disponible" ? "Solicitar préstamo" : "No disponible"}
+            </button>
+
+            {message && <p role="status" aria-live="polite">{message}</p>}
           </article>
         </div>
       </section>

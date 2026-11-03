@@ -10,7 +10,6 @@ import RegisterPage from "../pages/auth/RegisterPage";
 
 import AdminBooksPage from "../pages/AdminBooksPage";
 import AdminBookCreatePage from "../pages/AdminBookCreatePage";
-import AdminBookRequestsPage from "../pages/AdminBookRequestsPage";
 
 import AdminRequestPage from "../pages/AdminRequestsPage";
 import AdminRoleRequestsPage from "../pages/AdminRoleRequestsPage";
@@ -41,10 +40,6 @@ function AppRoutes() {
         element={<AdminBookCreatePage />}
       />
 
-      <Route
-        path="/admin/solicitudes-libros"
-        element={<AdminBookRequestsPage />}
-      />
 
       <Route
         path="/admin/solicitudes-administrador"

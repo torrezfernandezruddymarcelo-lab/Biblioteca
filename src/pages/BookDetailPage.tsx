@@ -1,15 +1,12 @@
 import GlobalNavigation from "../components/GlobalNavigation";
-import { useState } from "react";
 import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 
 import { authRepository } from "../repositories/authRepository";
 import { bookRepository } from "../repositories/bookRepository";
-import { bookRequestRepository } from "../repositories/bookRequestRepository";
 
 function BookDetailPage() {
   const navigate = useNavigate();
   const { bookId } = useParams();
-  const [message, setMessage] = useState("");
 
   const user = authRepository.getCurrentUser();
   const book = bookId ? bookRepository.getById(bookId) : null;
@@ -31,11 +28,6 @@ function BookDetailPage() {
   const handleLogout = () => {
     authRepository.logout();
     navigate("/login", { replace: true });
-  };
-
-  const handleRequest = () => {
-    const result = bookRequestRepository.create(book.id, user);
-    setMessage(result.message);
   };
 
   return (
@@ -81,16 +73,6 @@ function BookDetailPage() {
               </a>
             )}
 
-            <button
-              className="sketch-button"
-              type="button"
-              onClick={handleRequest}
-              disabled={book.status !== "Disponible"}
-            >
-              {book.status === "Disponible" ? "Solicitar préstamo" : "No disponible"}
-            </button>
-
-            {message && <p role="status" aria-live="polite">{message}</p>}
           </article>
         </div>
       </section>

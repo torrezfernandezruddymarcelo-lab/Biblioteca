@@ -1,32 +1,25 @@
 import initialBooks from "../data/books.json";
 import { storageService } from "../services/storageService";
-import type { Book } from "../types/book";
+import type { Book, BookStatus } from "../types/book";
 
 const BOOKS_KEY = "biblioteca_books";
 
-// IDs de las obras que venían precargadas en el catálogo.
-const PRELOADED_BOOK_IDS = new Set([
-  "book-1",
-  "book-2",
-  "book-3",
-  "book-4",
-  "book-5",
-  "obra-clasicas-de-siempre",
-]);
+const normalizeBook = (book: Partial<Book> & Pick<Book, "id" | "title" | "author" | "category" | "year" | "description">): Book => ({
+  ...book,
+  status: book.status === "Prestado" ? "Prestado" : "Disponible",
+});
 
 const getBooks = (): Book[] => {
-  const storedBooks = storageService.get<Book[]>(BOOKS_KEY);
-  const defaults = initialBooks as Book[];
+  const storedBooks = storageService.get<Book[]>(BOOKS_KEY) ?? [];
+  const defaults = (initialBooks as Book[]).map(normalizeBook);
+  const customBooks = storedBooks
+    .filter((book) => !defaults.some((defaultBook) => defaultBook.id === book.id))
+    .map(normalizeBook);
 
-  // Conserva únicamente los libros agregados desde el panel de administración.
-  const userBooks = (storedBooks ?? []).filter(
-    (book) => !PRELOADED_BOOK_IDS.has(book.id)
-  );
-
-  return userBooks.map(({ status: _status, ...book }) => book as Book);
+  return [...defaults, ...customBooks];
 };
 
-const saveBooks = (books: Book[]) => {
+const saveBooks = (books: Book[]): void => {
   storageService.set(BOOKS_KEY, books);
 };
 
@@ -41,10 +34,11 @@ export const bookRepository = {
 
   search(term: string): Book[] {
     const normalized = term.trim().toLowerCase();
+    const books = getBooks();
 
-    if (!normalized) return getBooks();
+    if (!normalized) return books;
 
-    return getBooks().filter((book) =>
+    return books.filter((book) =>
       [book.title, book.author, book.category, String(book.year)]
         .join(" ")
         .toLowerCase()
@@ -52,15 +46,25 @@ export const bookRepository = {
     );
   },
 
-  add(bookData: Omit<Book, "id">): Book {
+  add(bookData: Omit<Book, "id" | "status"> & { status?: BookStatus }): Book {
     const books = getBooks();
     const newBook: Book = {
       ...bookData,
       id: crypto.randomUUID(),
+      status: bookData.status ?? "Disponible",
     };
 
     saveBooks([...books, newBook]);
     return newBook;
+  },
+
+  updateStatus(id: string, status: BookStatus): boolean {
+    const books = getBooks();
+    const exists = books.some((book) => book.id === id);
+    if (!exists) return false;
+
+    saveBooks(books.map((book) => book.id === id ? { ...book, status } : book));
+    return true;
   },
 
   deleteById(id: string): boolean {

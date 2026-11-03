@@ -63,12 +63,7 @@ function BooksPage() {
           <Link to="/">Inicio</Link>
           <Link to="/books">Catálogo</Link>
 
-          {authRepository.isAdmin() && (
-            <>
-              <Link to="/admin/libros/nuevo">Agregar libros</Link>
-              <Link to="/admin/solicitudes-libros">Solicitudes</Link>
-            </>
-          )}
+          {authRepository.canManageBooks() && <Link to="/admin/libros/nuevo">Agregar libros</Link>}
         </nav>
 
         <button

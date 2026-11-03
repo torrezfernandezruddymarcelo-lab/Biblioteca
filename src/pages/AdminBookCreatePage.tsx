@@ -18,7 +18,7 @@ function AdminBookCreatePage() {
   const [message, setMessage] = useState("");
 
   if (!user) return <Navigate to="/login" replace />;
-  if (!authRepository.isAdmin()) return <Navigate to="/" replace />;
+  if (!authRepository.canManageBooks()) return <Navigate to="/" replace />;
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -55,12 +55,11 @@ function AdminBookCreatePage() {
         <nav className="sketch-nav">
           <Link to="/">Inicio</Link>
           <Link to="/books">Catálogo</Link>
-          <Link to="/admin/solicitudes-libros">Solicitudes</Link>
         </nav>
       </header>
 
       <section className="sketch-form-section">
-        <span className="sketch-kicker">ADMINISTRACIÓN</span>
+        <span className="sketch-kicker">GESTIÓN DEL CATÁLOGO</span>
         <h1>Agregar un nuevo libro</h1>
         <p>Incorpora una nueva aventura al catálogo.</p>
 

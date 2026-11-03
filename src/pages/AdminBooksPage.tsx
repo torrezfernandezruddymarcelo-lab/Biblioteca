@@ -35,11 +35,6 @@ function AdminBooksPage() {
             <small>Registrar nuevos libros.</small>
           </Link>
 
-          <Link to="/admin/solicitudes-libros" className="admin-option">
-            <span>📖</span>
-            <strong>Solicitudes de libros</strong>
-            <small>Gestionar solicitudes de préstamos.</small>
-          </Link>
 
           {isPrincipalAdmin && (
             <Link to="/admin/solicitudes-administrador" className="admin-option">

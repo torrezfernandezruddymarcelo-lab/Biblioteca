@@ -4,7 +4,6 @@ import { Link, Navigate, useNavigate } from "react-router-dom";
 
 import { authRepository } from "../repositories/authRepository";
 import { bookRepository } from "../repositories/bookRepository";
-import { bookRequestRepository } from "../repositories/bookRequestRepository";
 
 function HomePage() {
   const navigate = useNavigate();
@@ -13,9 +12,7 @@ function HomePage() {
   if (!user) return <Navigate to="/login" replace />;
 
   const books = bookRepository.getAll();
-  const requests = bookRequestRepository.getByUser(user.id);
-
-  const isAdmin = authRepository.isAdmin();
+  const canManageBooks = authRepository.canManageBooks();
   const isPrincipalAdmin = authRepository.isPrincipalAdmin();
 
   const logout = () => {
@@ -36,17 +33,7 @@ function HomePage() {
 
           <Link to="/books">Catálogo</Link>
 
-          {isAdmin && (
-            <Link to="/admin/libros/nuevo">
-              Agregar libros
-            </Link>
-          )}
-
-          {isAdmin && (
-            <Link to="/admin/solicitudes-libros">
-              Solicitudes
-            </Link>
-          )}
+          {canManageBooks && <Link to="/admin/libros/nuevo">Agregar libros</Link>}
 
           {isPrincipalAdmin && (
             <Link to="/admin/solicitudes-administrador">
@@ -121,8 +108,8 @@ function HomePage() {
         </article>
 
         <article>
-          <span>Mis solicitudes</span>
-          <strong>{requests.length}</strong>
+          <span>Libros disponibles</span>
+          <strong>{books.filter((book) => book.status === "Disponible").length}</strong>
         </article>
       </section>
 

@@ -1,4 +1,3 @@
-
 import { Link, Navigate } from "react-router-dom";
 import { useState } from "react";
 
@@ -23,14 +22,12 @@ function AdminBooksPage() {
           <h1>Panel de administración</h1>
           <p>Bienvenido, {user.name}</p>
         </div>
-
         <Link to="/">Volver al inicio</Link>
       </header>
 
       <section className="admin-menu">
         <h2>Administración de Biblioteca</h2>
         <p>Selecciona una opción.</p>
-
         <div className="admin-menu-options">
           <Link to="/admin/libros/nuevo" className="admin-option">
             <span>📚</span>
@@ -38,25 +35,17 @@ function AdminBooksPage() {
             <small>Registrar nuevos libros.</small>
           </Link>
 
-          <Link
-            to="/admin/solicitudes-libros"
-            className="admin-option"
-          >
+          <Link to="/admin/solicitudes-libros" className="admin-option">
             <span>📖</span>
             <strong>Solicitudes de libros</strong>
             <small>Gestionar solicitudes de préstamos.</small>
           </Link>
 
           {isPrincipalAdmin && (
-            <Link
-              to="/admin/solicitudes-administrador"
-              className="admin-option"
-            >
-              <span>👤</span>
-              <strong>Solicitudes de administradores</strong>
-              <small>
-                Aceptar o rechazar nuevos administradores.
-              </small>
+            <Link to="/admin/solicitudes-administrador" className="admin-option">
+              <span>👩‍🏫</span>
+              <strong>Solicitudes de docentes</strong>
+              <small>Aprobar o rechazar solicitudes para obtener el rol de docente.</small>
             </Link>
           )}
         </div>
@@ -64,7 +53,6 @@ function AdminBooksPage() {
 
       <section className="admin-books">
         <h2>Libros registrados</h2>
-
         {books.length === 0 ? (
           <p>No hay libros registrados todavía.</p>
         ) : (
@@ -77,10 +65,7 @@ function AdminBooksPage() {
                   <p>Categoría: {book.category}</p>
                   <p>Estado: {book.status}</p>
                 </div>
-
-                <Link to={`/books/${book.id}`}>
-                  Ver libro
-                </Link>
+                <Link to={`/books/${book.id}`}>Ver libro</Link>
               </article>
             ))}
           </div>

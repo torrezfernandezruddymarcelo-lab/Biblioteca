@@ -1,3 +1,5 @@
+export type BookStatus = "Disponible" | "Prestado";
+
 export interface Book {
   id: string;
   title: string;
@@ -6,4 +8,5 @@ export interface Book {
   year: number;
   description: string;
   pdfUrl?: string;
+  status: BookStatus;
 }

@@ -1,5 +1,4 @@
-
-export type UserRole = "ADMIN_PRINCIPAL" | "ADMIN" | "USUARIO";
+export type UserRole = "ADMIN_PRINCIPAL" | "ADMIN" | "DOCENTE" | "USUARIO";
 
 export interface User {
   id: string;
@@ -21,4 +20,14 @@ export interface RegisterData {
   name: string;
   carnet: string;
   password: string;
+  accountType: "ALUMNO" | "DOCENTE";
+}
+
+export interface TeacherRequest {
+  id: string;
+  userId: string;
+  userName: string;
+  carnet: string;
+  requestedAt: string;
+  status: "Pendiente" | "Aprobada" | "Rechazada";
 }

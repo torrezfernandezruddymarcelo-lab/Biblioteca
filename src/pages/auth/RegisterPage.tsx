@@ -5,10 +5,10 @@ import { authRepository } from "../../repositories/authRepository";
 
 function RegisterPage() {
   const navigate = useNavigate();
-
   const [name, setName] = useState("");
   const [carnet, setCarnet] = useState("");
   const [password, setPassword] = useState("");
+  const [accountType, setAccountType] = useState<"ALUMNO" | "DOCENTE">("ALUMNO");
   const [message, setMessage] = useState("");
 
   if (authRepository.isAuthenticated()) {
@@ -17,12 +17,11 @@ function RegisterPage() {
 
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-
-    const result = authRepository.register({ name, carnet, password });
+    const result = authRepository.register({ name, carnet, password, accountType });
     setMessage(result.message);
 
     if (result.success) {
-      navigate("/login", { replace: true });
+      navigate("/login", { replace: true, state: { message: result.message } });
     }
   };
 
@@ -32,27 +31,29 @@ function RegisterPage() {
         <div className="login-card__header">
           <span className="login-card__eyebrow">Biblioteca Galáctica</span>
           <h1>Crear una cuenta</h1>
-          <p>Regístrate para descubrir y solicitar libros.</p>
+          <p>Regístrate como alumno o solicita acceso como docente.</p>
         </div>
 
         <div className="login-form__group">
           <label htmlFor="register-name">Nombre completo</label>
-          <input
-            id="register-name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            required
-          />
+          <input id="register-name" value={name} onChange={(e) => setName(e.target.value)} required />
         </div>
 
         <div className="login-form__group">
           <label htmlFor="register-carnet">Carnet</label>
-          <input
-            id="register-carnet"
-            value={carnet}
-            onChange={(e) => setCarnet(e.target.value)}
-            required
-          />
+          <input id="register-carnet" value={carnet} onChange={(e) => setCarnet(e.target.value)} required />
+        </div>
+
+        <div className="login-form__group">
+          <label htmlFor="register-account-type">Tipo de cuenta</label>
+          <select
+            id="register-account-type"
+            value={accountType}
+            onChange={(e) => setAccountType(e.target.value as "ALUMNO" | "DOCENTE")}
+          >
+            <option value="ALUMNO">Alumno</option>
+            <option value="DOCENTE">Docente (requiere aprobación)</option>
+          </select>
         </div>
 
         <div className="login-form__group">
@@ -69,10 +70,7 @@ function RegisterPage() {
 
         {message && <p role="alert">{message}</p>}
 
-        <button className="login-form__submit" type="submit">
-          Registrarme
-        </button>
-
+        <button className="login-form__submit" type="submit">Registrarme</button>
         <p>¿Ya tienes una cuenta? <Link to="/login">Inicia sesión</Link></p>
       </form>
     </main>
